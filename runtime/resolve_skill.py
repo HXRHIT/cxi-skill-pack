@@ -17,10 +17,14 @@ def load_manifest(path: Path) -> dict:
 def score_skill(query: str, skill: dict) -> int:
     q = normalize(query)
     skill_id = normalize(skill.get("id", ""))
+    aliases = [normalize(value).removeprefix("/") for value in [skill_id, skill.get("shortName", ""), *skill.get("aliases", []), *skill.get("commands", [])] if value]
     description = normalize(skill.get("description", ""))
-    if q == "/" + skill_id or q == skill_id:
+    if any(q == "/" + alias or q == alias for alias in aliases):
         return 100
     score = 0
+    for alias in aliases:
+        if alias and alias in q:
+            score += 30
     for keyword in skill.get("keywords", []):
         normalized_keyword = normalize(keyword)
         if normalized_keyword and normalized_keyword in q:
@@ -30,6 +34,9 @@ def score_skill(query: str, skill: dict) -> int:
             continue
         if token in skill_id:
             score += 8
+        for alias in aliases:
+            if token and token in alias:
+                score += 6
         if token in description:
             score += 3
     return score
@@ -56,6 +63,9 @@ def resolve(query: str, manifest: dict, limit: int = 3) -> dict:
         top = candidates[0]
         return {
             "resolved_skill_id": top["id"],
+            "canonical_skill_id": top["id"],
+            "command": top.get("command", "/" + top["id"]),
+            "legacy_command": top.get("canonicalCommand", "/" + top["id"]),
             "candidates": candidates[:1],
             "reason": f"Best match by canonical ID/description score: {top['score']}",
             "required_inputs": ["user request", "source files or parameters required by the resolved SKILL.md"],

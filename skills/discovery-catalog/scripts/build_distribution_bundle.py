@@ -37,8 +37,60 @@ KEYWORD_RULES: dict[str, list[str]] = {
     "transcript-verification-enhancer": ["전사본 검증", "stt", "화자 분리", "오타 교정"],
 }
 
+SHORT_NAME_RULES: dict[str, str] = {
+    "app-review-analysis-pipeline": "app-review",
+    "coding-sheet-generator": "coding-sheet",
+    "discovery-catalog": "discover",
+    "executive-one-pager-skill": "one-pager",
+    "followup-implementation-tracker": "followup",
+    "interview-interim-report-writer": "interview-report",
+    "interview-quant-coding-skill": "interview-coding",
+    "interview-results-dashboard": "interview-dashboard",
+    "persona-generator-skill": "persona",
+    "qual-thematic-coding-skill": "qual-coding",
+    "recruiting-list-legend-generator": "recruiting-legend",
+    "research-plan-writer-skill": "research-plan",
+    "research-qa-skill": "research-qa",
+    "survey-analysis-verification": "survey-verify",
+    "survey-basic-stats-analysis": "survey-stats",
+    "survey-data-preprocessing": "survey-clean",
+    "survey-interim-report-writer": "survey-report",
+    "survey-open-ended-coding-skill": "survey-open-coding",
+    "survey-results-dashboard": "survey-dashboard",
+    "template-hygiene-checker": "template-check",
+    "transcript-anonymizer-skill": "transcript-pii",
+    "transcript-pipeline-skill": "transcript-flow",
+    "transcript-verification-enhancer": "transcript-clean",
+}
+
+DISPLAY_NAME_RULES: dict[str, str] = {
+    "app-review-analysis-pipeline": "앱 리뷰 분석",
+    "coding-sheet-generator": "코딩 시트 생성",
+    "discovery-catalog": "스킬 찾기",
+    "executive-one-pager-skill": "임원 요약 원페이저",
+    "followup-implementation-tracker": "후속조치 추적",
+    "interview-interim-report-writer": "인터뷰 중간보고서",
+    "interview-quant-coding-skill": "인터뷰 정량 코딩",
+    "interview-results-dashboard": "인터뷰 결과 대시보드",
+    "persona-generator-skill": "페르소나 생성",
+    "qual-thematic-coding-skill": "정성 테마 코딩",
+    "recruiting-list-legend-generator": "리크루팅 범례 생성",
+    "research-plan-writer-skill": "리서치 계획서",
+    "research-qa-skill": "리서치 QA",
+    "survey-analysis-verification": "설문 분석 검증",
+    "survey-basic-stats-analysis": "설문 기초통계",
+    "survey-data-preprocessing": "설문 전처리",
+    "survey-interim-report-writer": "설문 중간보고서",
+    "survey-open-ended-coding-skill": "설문 주관식 코딩",
+    "survey-results-dashboard": "설문 결과 대시보드",
+    "template-hygiene-checker": "템플릿 위생 검사",
+    "transcript-anonymizer-skill": "전사본 PII 검사",
+    "transcript-pipeline-skill": "전사본 처리 파이프라인",
+    "transcript-verification-enhancer": "전사본 정리",
+}
+
 PACKAGE_NAME = "cxi-skill-pack"
-SOURCE_REPO_NAME = "UXR-Template"
+SOURCE_REPO_NAME = "cxi-template"
 PUBLIC_REPO_URL = "https://github.com/HXRHIT/cxi-skill-pack"
 GENERATED_OUTPUT_NAMES = {
     "README.md",
@@ -52,11 +104,36 @@ GENERATED_OUTPUT_NAMES = {
 }
 
 
+def unique_values(values: list[str]) -> list[str]:
+    seen: set[str] = set()
+    result: list[str] = []
+    for value in values:
+        clean = value.strip()
+        if not clean or clean in seen:
+            continue
+        seen.add(clean)
+        result.append(clean)
+    return result
+
+
+def short_name_for(skill_id: str) -> str:
+    return SHORT_NAME_RULES.get(skill_id, skill_id)
+
+
+def aliases_for(skill_id: str) -> list[str]:
+    short_name = short_name_for(skill_id)
+    return unique_values([short_name, skill_id])
+
+
+def commands_for(skill_id: str) -> list[str]:
+    return [f"/{alias}" for alias in aliases_for(skill_id)]
+
+
 def find_repo_root(start: Path) -> Path:
     for candidate in [start, *start.parents]:
         if (candidate / "UX_Research_AI_아이디어_로그.md").exists() and (candidate / ".agents").exists():
             return candidate
-    raise FileNotFoundError("Could not locate UXR-Template repo root")
+    raise FileNotFoundError("Could not locate cxi-template repo root")
 
 
 def extract_frontmatter(text: str) -> str:
@@ -105,16 +182,24 @@ def scan_skills(skills_root: Path) -> list[dict[str, Any]]:
         skill_md = skill_dir / "SKILL.md"
         if not skill_dir.is_dir() or not skill_md.exists():
             continue
+        skill_id = skill_dir.name
+        short_name = short_name_for(skill_id)
+        aliases = aliases_for(skill_id)
         text = skill_md.read_text(encoding="utf-8")
         frontmatter = extract_frontmatter(text)
         skills.append(
             {
-                "id": skill_dir.name,
-                "name": extract_field(frontmatter, "name") or skill_dir.name,
+                "id": skill_id,
+                "name": extract_field(frontmatter, "name") or skill_id,
+                "displayName": DISPLAY_NAME_RULES.get(skill_id, extract_field(frontmatter, "name") or skill_id),
+                "shortName": short_name,
                 "description": extract_field(frontmatter, "description"),
-                "entrypoint": f"skills/{skill_dir.name}/SKILL.md",
-                "command": f"/{skill_dir.name}",
-                "keywords": KEYWORD_RULES.get(skill_dir.name, []),
+                "entrypoint": f"skills/{skill_id}/SKILL.md",
+                "command": f"/{short_name}",
+                "canonicalCommand": f"/{skill_id}",
+                "commands": commands_for(skill_id),
+                "aliases": aliases,
+                "keywords": unique_values([*KEYWORD_RULES.get(skill_id, []), *aliases]),
                 "hasScripts": (skill_dir / "scripts").exists(),
                 "hasReferences": (skill_dir / "references").exists(),
                 "fingerprint": hash_skill_dir(skill_dir),
@@ -191,19 +276,26 @@ def write_adapter_files(output_root: Path, skills: list[dict[str, Any]]) -> None
 agent가 custom slash command를 지원하면 아래처럼 직접 호출할 수 있다.
 
 ```text
-/{skill_id}
+/{shortName}
 ```
+
+예: `/app-review`, `/survey-stats`, `/transcript-pii`
 
 자연어 요청은 `runtime/resolve_skill.py`로 먼저 어떤 스킬이 맞는지 찾은 뒤, resolved된 `SKILL.md`를 읽는다.
 
-agent별 adapter 안에 스킬 내용을 복제하지 않는다. 스킬이 바뀌면 UXR-Template에서 package를 다시 만들고 cxi-skill-pack repo를 갱신한다.
+긴 canonical skill ID는 내부 추적과 호환성을 위해 유지한다. 팀원이 직접 입력하는 명령은 짧은 `shortName`을 우선 사용한다.
 """
     (adapters_root / "README.md").write_text(readme, encoding="utf-8")
 
     for skill in skills:
-        command_text = f"""# {skill['command']}
+        alias = skill["shortName"]
+        command = f"/{alias}"
+        command_text = f"""# {command}
 
-UXR 스킬 `{skill['id']}`를 사용한다.
+권장 명령: UXR 스킬 `{skill['id']}`를 사용한다.
+
+짧은 권장 명령: `{skill['command']}`
+Canonical ID: `{skill['id']}`
 
 작업 전 순서:
 
@@ -212,7 +304,7 @@ UXR 스킬 `{skill['id']}`를 사용한다.
 3. 실행이 필요하고 허용된 경우에만 `skills/{skill['id']}/scripts/` 안의 코드를 실행한다.
 4. 요청이 애매하면 추측하지 말고 먼저 resolve한다.
 """
-        (commands_root / f"{skill['id']}.md").write_text(command_text, encoding="utf-8")
+        (commands_root / f"{alias}.md").write_text(command_text, encoding="utf-8")
 
     codex_installer = r'''
 from __future__ import annotations
@@ -235,9 +327,45 @@ def default_codex_skills_dir() -> Path:
     return Path.home() / ".codex" / "skills"
 
 
+def ensure_under(root: Path, target: Path) -> None:
+    resolved_root = root.resolve()
+    resolved_target = target.resolve()
+    if resolved_target == resolved_root or resolved_root not in resolved_target.parents:
+        raise ValueError(f"Refusing to modify path outside target skills dir: {target}")
+
+
+def write_alias_wrapper(root: Path, target: Path, skill: dict) -> str:
+    skill_id = skill["id"]
+    short_name = skill.get("shortName") or skill_id
+    destination = target / short_name
+    destination.mkdir(parents=True, exist_ok=True)
+    canonical_skill = root / "skills" / skill_id / "SKILL.md"
+    description = f"Short CXI alias for {skill_id}. {skill.get('description', '')}".strip()
+    wrapper = f"""---
+name: {short_name}
+description: {json.dumps(description, ensure_ascii=False)}
+---
+
+# {short_name}
+
+This is a short Codex alias for canonical CXI skill `{skill_id}`.
+
+Before doing any task:
+
+1. Read the canonical skill entrypoint completely: `{canonical_skill}`
+2. Follow that `SKILL.md` exactly.
+3. Use canonical skill ID `{skill_id}` in logs and generated metadata.
+4. If the request is risky or ambiguous, ask before executing.
+"""
+    (destination / "SKILL.md").write_text(wrapper, encoding="utf-8")
+    return short_name
+
+
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Install UXR skill pack into Codex personal skills.")
-    parser.add_argument("--target", type=Path, default=None, help="Target skills directory. Defaults to %CODEX_HOME%/skills or ~/.codex/skills.")
+    parser = argparse.ArgumentParser(description="Install CXI skill pack into Codex personal skills.")
+    parser.add_argument("--target", type=Path, default=None, help="Target skills directory. Defaults to %%CODEX_HOME%%/skills or ~/.codex/skills.")
+    parser.add_argument("--mode", choices=["alias", "copy"], default="alias", help="alias installs short wrapper skills. copy installs full canonical skill folders.")
+    parser.add_argument("--remove-legacy", action="store_true", help="Remove old long canonical skill folders from the target when mode=alias.")
     args = parser.parse_args()
 
     root = pack_root()
@@ -246,19 +374,32 @@ def main() -> None:
     target.mkdir(parents=True, exist_ok=True)
 
     installed = []
+    legacy_present = []
     for skill in manifest.get("skills", []):
         skill_id = skill["id"]
         source = root / "skills" / skill_id
-        destination = target / skill_id
-        shutil.copytree(source, destination, dirs_exist_ok=True)
-        installed.append(skill_id)
+        if args.mode == "copy":
+            destination = target / skill_id
+            shutil.copytree(source, destination, dirs_exist_ok=True)
+            installed.append(skill_id)
+        else:
+            installed.append(write_alias_wrapper(root, target, skill))
+            legacy_destination = target / skill_id
+            if legacy_destination.exists() and skill_id != (skill.get("shortName") or skill_id):
+                if args.remove_legacy:
+                    ensure_under(target, legacy_destination)
+                    shutil.rmtree(legacy_destination)
+                else:
+                    legacy_present.append(skill_id)
 
     print(json.dumps({
         "status": "installed",
         "adapter": "codex",
+        "mode": args.mode,
         "target": str(target),
         "skills": installed,
-        "next": "Start a new Codex task or refresh the app so the copied skills can be discovered."
+        "legacySkillDirsStillPresent": legacy_present,
+        "next": "Start a new Codex task or refresh the app. Use short commands such as /app-review, /survey-stats, and /transcript-pii."
     }, ensure_ascii=False, indent=2))
 
 
@@ -279,13 +420,23 @@ clone 또는 압축 해제한 `cxi-skill-pack` 폴더에서 실행한다.
 adapters\\codex\\install_to_codex.bat
 ```
 
-기본값은 모든 `skills/*` 폴더를 `%CODEX_HOME%\\skills` 또는 `~/.codex/skills`로 복사한다.
+기본값은 짧은 alias wrapper를 `%CODEX_HOME%\\skills` 또는 `~/.codex/skills`에 만든다.
+
+예: `/app-review`, `/survey-stats`, `/transcript-pii`
 
 다른 위치에 설치하려면:
 
 ```bash
 python adapters/codex/install_to_codex.py --target C:/path/to/skills
 ```
+
+기존처럼 긴 canonical skill 폴더를 그대로 복사하려면:
+
+```bash
+python adapters/codex/install_to_codex.py --mode copy
+```
+
+이전 설치로 긴 skill 폴더가 남아 있다면 먼저 결과의 `legacySkillDirsStillPresent`를 확인한다. 삭제까지 하려면 명시적으로 `--remove-legacy`를 붙인다.
 """,
         encoding="utf-8",
     )
@@ -306,12 +457,15 @@ def default_commands_dir() -> Path:
     return Path.home() / ".claude" / "commands" / "uxr"
 
 
-def command_body(pack: Path, skill: dict) -> str:
+def command_body(pack: Path, skill: dict, command_name: str) -> str:
     skill_id = skill["id"]
-    return f"""설치된 UXR skill pack에서 `{skill_id}` 스킬을 사용한다.
+    return f"""설치된 CXI skill pack에서 `{command_name}` 명령으로 canonical `{skill_id}` 스킬을 사용한다.
 
 스킬 진입점:
 `{pack / "skills" / skill_id / "SKILL.md"}`
+
+짧은 권장 명령: `{skill.get("command", "/" + command_name)}`
+Canonical ID: `{skill_id}`
 
 작업 전 순서:
 
@@ -337,8 +491,9 @@ def main() -> None:
 
     written = []
     for skill in manifest.get("skills", []):
-        path = commands_dir / f"{skill['id']}.md"
-        path.write_text(command_body(root, skill), encoding="utf-8")
+        command_name = skill.get("shortName") or skill["id"]
+        path = commands_dir / f"{command_name}.md"
+        path.write_text(command_body(root, skill, command_name), encoding="utf-8")
         written.append(str(path))
 
     print(json.dumps({
@@ -376,6 +531,10 @@ python adapters/claude/install_slash_commands.py --commands-dir C:/path/to/comma
 ```
 
 생성된 command 파일은 이 skill pack의 `skills/{skill_id}/SKILL.md`를 읽도록 안내한다.
+
+팀원이 직접 입력할 때는 짧은 명령을 우선 사용한다.
+
+예: `/uxr:app-review`, `/uxr:survey-stats`, `/uxr:transcript-pii`
 """,
         encoding="utf-8",
     )
@@ -413,21 +572,21 @@ def main() -> None:
         "",
         "사용자가 UXR 작업을 요청하면:",
         "",
-        "1. 사용자가 `/{skill_id}`를 쓰면 pack에서 해당 스킬의 `SKILL.md`를 읽는다.",
+        "1. 사용자가 `/{shortName}`을 쓰면 manifest에서 canonical skill ID를 찾고 해당 `SKILL.md`를 읽는다.",
         "2. 사용자가 자연어로 요청하면 먼저 `manifest.json` 기준으로 적절한 스킬을 찾는다.",
-        "3. 아래 canonical skill ID를 그대로 사용한다.",
+        "3. 팀원에게는 짧은 command를 우선 보여주고, 로그에는 canonical skill ID를 함께 남긴다.",
         "4. 파일 쓰기, 민감정보 처리, 외부 API 호출, 애매한 요청 실행 전에는 사용자에게 확인한다.",
         "",
         "사용 가능한 스킬:",
     ]
     for skill in skills:
-        lines.append(f"- `{skill['id']}`: {skill.get('description', '')}")
+        lines.append(f"- `{skill.get('command', '/' + skill['id'])}` (`{skill['id']}`): {skill.get('description', '')}")
 
     (target / "CHATGPT_PROJECT_INSTRUCTIONS.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     (target / "manifest_summary.json").write_text(json.dumps({
         "manifest": str(root / "manifest.json"),
         "skillCount": len(skills),
-        "commands": [skill["command"] for skill in skills],
+        "commands": [command for skill in skills for command in skill.get("commands", [skill["command"]])],
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     print(json.dumps({
@@ -485,16 +644,22 @@ except ImportError as exc:
 
 PACK_ROOT = Path(__file__).resolve().parents[2]
 MANIFEST_PATH = PACK_ROOT / "manifest.json"
-    mcp = FastMCP("cxi-skill-pack")
+mcp = FastMCP("cxi-skill-pack")
 
 
 def load_manifest() -> dict[str, Any]:
     return json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
 
 
+def normalize_skill_key(value: str) -> str:
+    return value.strip().lower().removeprefix("/").replace("_", "-")
+
+
 def find_skill(skill_id: str) -> dict[str, Any] | None:
+    wanted = normalize_skill_key(skill_id)
     for skill in load_manifest().get("skills", []):
-        if skill.get("id") == skill_id:
+        aliases = [skill.get("id", ""), skill.get("shortName", ""), *skill.get("aliases", []), *skill.get("commands", [])]
+        if wanted in {normalize_skill_key(alias) for alias in aliases if alias}:
             return skill
     return None
 
@@ -509,7 +674,7 @@ def resolve_skill(query: str, skill_id: str | None = None) -> dict[str, Any]:
             return {
                 "resolved_skill_id": skill_id,
                 "candidates": [skill],
-                "reason": "skill_id matched a canonical UXR skill ID.",
+                "reason": "skill_id matched a canonical CXI skill ID or short alias.",
                 "required_inputs": ["user request", "skill-specific inputs"],
                 "estimated_outputs": ["see resolved SKILL.md"],
                 "risk_level": "medium" if skill.get("hasScripts") else "low",
@@ -634,10 +799,14 @@ def load_manifest(path: Path) -> dict:
 def score_skill(query: str, skill: dict) -> int:
     q = normalize(query)
     skill_id = normalize(skill.get("id", ""))
+    aliases = [normalize(value).removeprefix("/") for value in [skill_id, skill.get("shortName", ""), *skill.get("aliases", []), *skill.get("commands", [])] if value]
     description = normalize(skill.get("description", ""))
-    if q == "/" + skill_id or q == skill_id:
+    if any(q == "/" + alias or q == alias for alias in aliases):
         return 100
     score = 0
+    for alias in aliases:
+        if alias and alias in q:
+            score += 30
     for keyword in skill.get("keywords", []):
         normalized_keyword = normalize(keyword)
         if normalized_keyword and normalized_keyword in q:
@@ -647,6 +816,9 @@ def score_skill(query: str, skill: dict) -> int:
             continue
         if token in skill_id:
             score += 8
+        for alias in aliases:
+            if token and token in alias:
+                score += 6
         if token in description:
             score += 3
     return score
@@ -673,6 +845,9 @@ def resolve(query: str, manifest: dict, limit: int = 3) -> dict:
         top = candidates[0]
         return {
             "resolved_skill_id": top["id"],
+            "canonical_skill_id": top["id"],
+            "command": top.get("command", "/" + top["id"]),
+            "legacy_command": top.get("canonicalCommand", "/" + top["id"]),
             "candidates": candidates[:1],
             "reason": f"Best match by canonical ID/description score: {top['score']}",
             "required_inputs": ["user request", "source files or parameters required by the resolved SKILL.md"],
@@ -796,6 +971,8 @@ def write_docs(output_root: Path, repo_root: Path) -> None:
         "mcp-execution-guide-ko.md": repo_root / ".agents" / "skills" / "discovery-catalog" / "references" / "mcp-execution-guide.md",
         "mcp-routing-contract.md": repo_root / ".agents" / "skills" / "discovery-catalog" / "references" / "mcp-routing-contract.md",
         "release-policy.md": repo_root / ".agents" / "skills" / "discovery-catalog" / "references" / "release-policy.md",
+        "release-notes-v0.1.md": repo_root / ".agents" / "skills" / "discovery-catalog" / "references" / "release-notes-v0.1.md",
+        "codex-duplicate-skill-cleanup-guide.md": repo_root / ".agents" / "skills" / "discovery-catalog" / "references" / "codex-duplicate-skill-cleanup-guide.md",
     }
     for output_name, source_path in source_docs.items():
         if source_path.exists():
@@ -814,7 +991,10 @@ def write_docs(output_root: Path, repo_root: Path) -> None:
 
 
 def write_root_readme(output_root: Path, skills: list[dict[str, Any]]) -> None:
-    skill_lines = "\n".join(f"- `{skill['id']}`: {skill.get('description', '')}" for skill in skills)
+    skill_lines = "\n".join(
+        f"- `{skill['command']}` ({skill.get('displayName', skill['shortName'])}) → `{skill['id']}`: {skill.get('description', '')}"
+        for skill in skills
+    )
     readme = f"""# CXI Skill Pack
 
 이 repo는 CXI/UXR 팀이 여러 AI agent에서 같은 UX 리서치 스킬을 사용하기 위한 배포용 skill pack이다.
@@ -869,7 +1049,9 @@ agent가 별도 폴더로 복사 설치되어 있다면 `git pull` 후 해당 ad
 - `adapters/`: Codex, Claude, ChatGPT, MCP 연결 도구
 - `runtime/`: 자연어 요청을 스킬로 연결하거나 업데이트를 비교하는 공통 도구
 - `docs/install-guide-ko.md`: 팀원용 한글 설치 가이드
+- `docs/release-notes-v0.1.md`: GitHub Release용 v0.1 릴리즈 노트
 - `docs/release-candidates-v0.1.md`: 1차 배포 추천/파일럿/보류 리포트
+- `docs/codex-duplicate-skill-cleanup-guide.md`: Codex 중복 스킬 표시 정리 가이드
 
 ## 포함 스킬
 
@@ -887,12 +1069,13 @@ def write_manifest(output_root: Path, repo_root: Path, skills: list[dict[str, An
         "sourceRepoName": SOURCE_REPO_NAME,
         "publicRepo": PUBLIC_REPO_URL,
         "canonicalSkillRoot": "skills",
-        "directCommandPattern": "/{skill_id}",
+        "directCommandPattern": "/{shortName}",
+        "legacyCommandPattern": "/{skill_id}",
         "naturalLanguageResolver": "runtime/resolve_skill.py",
         "skillCount": len(skills),
         "skills": skills,
         "adapters": {
-            "slashCommands": "adapters/slash-commands/{skill_id}.md",
+            "slashCommands": "adapters/slash-commands/{shortName}.md",
             "codexInstall": "adapters/codex/install_to_codex.py",
             "claudeSlashInstall": "adapters/claude/install_slash_commands.py",
             "chatgptProjectInstructions": "adapters/chatgpt/generate_project_instructions.py",

@@ -1,6 +1,9 @@
-# /discovery-catalog
+# /discover
 
-UXR 스킬 `discovery-catalog`를 사용한다.
+권장 명령: UXR 스킬 `discovery-catalog`를 사용한다.
+
+짧은 권장 명령: `/discover`
+Canonical ID: `discovery-catalog`
 
 작업 전 순서:
 

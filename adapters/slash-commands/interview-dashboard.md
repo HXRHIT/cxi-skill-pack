@@ -1,6 +1,9 @@
-# /interview-results-dashboard
+# /interview-dashboard
 
-UXR 스킬 `interview-results-dashboard`를 사용한다.
+권장 명령: UXR 스킬 `interview-results-dashboard`를 사용한다.
+
+짧은 권장 명령: `/interview-dashboard`
+Canonical ID: `interview-results-dashboard`
 
 작업 전 순서:
 

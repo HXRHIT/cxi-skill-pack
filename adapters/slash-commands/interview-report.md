@@ -1,6 +1,9 @@
-# /interview-interim-report-writer
+# /interview-report
 
-UXR 스킬 `interview-interim-report-writer`를 사용한다.
+권장 명령: UXR 스킬 `interview-interim-report-writer`를 사용한다.
+
+짧은 권장 명령: `/interview-report`
+Canonical ID: `interview-interim-report-writer`
 
 작업 전 순서:
 

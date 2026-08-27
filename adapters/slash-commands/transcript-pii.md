@@ -1,6 +1,9 @@
-# /transcript-anonymizer-skill
+# /transcript-pii
 
-UXR 스킬 `transcript-anonymizer-skill`를 사용한다.
+권장 명령: UXR 스킬 `transcript-anonymizer-skill`를 사용한다.
+
+짧은 권장 명령: `/transcript-pii`
+Canonical ID: `transcript-anonymizer-skill`
 
 작업 전 순서:
 

@@ -1,6 +1,9 @@
-# /qual-thematic-coding-skill
+# /qual-coding
 
-UXR 스킬 `qual-thematic-coding-skill`를 사용한다.
+권장 명령: UXR 스킬 `qual-thematic-coding-skill`를 사용한다.
+
+짧은 권장 명령: `/qual-coding`
+Canonical ID: `qual-thematic-coding-skill`
 
 작업 전 순서:
 

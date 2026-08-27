@@ -63,6 +63,8 @@ The package contains copied canonical skill folders, a `manifest.json`, slash-co
 
 For the Korean teammate-facing installation guide, read [references/agent-adapter-install-guide.md](references/agent-adapter-install-guide.md).
 
+Use short user-facing commands from `manifest.json` such as `/app-review`, `/survey-stats`, and `/transcript-pii`. Keep long canonical skill IDs as internal stable IDs for file paths, logs, MCP responses, and generated reports.
+
 ### Audit readiness and select release candidates
 
 When the user asks whether skills are ready for distribution or which skills should be included in the first release, use the release policy and generated reports instead of deciding from memory.

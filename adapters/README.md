@@ -5,9 +5,11 @@
 agent가 custom slash command를 지원하면 아래처럼 직접 호출할 수 있다.
 
 ```text
-/{skill_id}
+/{shortName}
 ```
+
+예: `/app-review`, `/survey-stats`, `/transcript-pii`
 
 자연어 요청은 `runtime/resolve_skill.py`로 먼저 어떤 스킬이 맞는지 찾은 뒤, resolved된 `SKILL.md`를 읽는다.
 
-agent별 adapter 안에 스킬 내용을 복제하지 않는다. 스킬이 바뀌면 UXR-Template에서 package를 다시 만들고 cxi-skill-pack repo를 갱신한다.
+긴 canonical skill ID는 내부 추적과 호환성을 위해 유지한다. 팀원이 직접 입력하는 명령은 짧은 `shortName`을 우선 사용한다.

@@ -1,6 +1,9 @@
-# /executive-one-pager-skill
+# /one-pager
 
-UXR 스킬 `executive-one-pager-skill`를 사용한다.
+권장 명령: UXR 스킬 `executive-one-pager-skill`를 사용한다.
+
+짧은 권장 명령: `/one-pager`
+Canonical ID: `executive-one-pager-skill`
 
 작업 전 순서:
 

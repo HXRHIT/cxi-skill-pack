@@ -1,6 +1,9 @@
-# /transcript-pipeline-skill
+# /transcript-flow
 
-UXR 스킬 `transcript-pipeline-skill`를 사용한다.
+권장 명령: UXR 스킬 `transcript-pipeline-skill`를 사용한다.
+
+짧은 권장 명령: `/transcript-flow`
+Canonical ID: `transcript-pipeline-skill`
 
 작업 전 순서:
 

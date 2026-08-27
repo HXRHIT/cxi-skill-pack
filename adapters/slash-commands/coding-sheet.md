@@ -1,6 +1,9 @@
-# /coding-sheet-generator
+# /coding-sheet
 
-UXR 스킬 `coding-sheet-generator`를 사용한다.
+권장 명령: UXR 스킬 `coding-sheet-generator`를 사용한다.
+
+짧은 권장 명령: `/coding-sheet`
+Canonical ID: `coding-sheet-generator`
 
 작업 전 순서:
 

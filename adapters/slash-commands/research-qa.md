@@ -1,6 +1,9 @@
-# /research-qa-skill
+# /research-qa
 
-UXR 스킬 `research-qa-skill`를 사용한다.
+권장 명령: UXR 스킬 `research-qa-skill`를 사용한다.
+
+짧은 권장 명령: `/research-qa`
+Canonical ID: `research-qa-skill`
 
 작업 전 순서:
 

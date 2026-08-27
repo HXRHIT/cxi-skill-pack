@@ -1,6 +1,9 @@
-# /research-plan-writer-skill
+# /research-plan
 
-UXR 스킬 `research-plan-writer-skill`를 사용한다.
+권장 명령: UXR 스킬 `research-plan-writer-skill`를 사용한다.
+
+짧은 권장 명령: `/research-plan`
+Canonical ID: `research-plan-writer-skill`
 
 작업 전 순서:
 

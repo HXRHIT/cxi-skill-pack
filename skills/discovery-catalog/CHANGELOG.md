@@ -10,6 +10,42 @@
 
 ---
 
+## 2026-08-27 — cxi-template rename과 Codex 중복 스킬 정리 가이드 반영
+
+- 계기: GitHub repo가 `UXR-Template`에서 `cxi-template`으로 변경되고, Codex에서 프로젝트 스킬과 개인 설치 스킬이 중복 노출되는 문제가 확인됨
+- 변경:
+  - source repo 표시명을 `cxi-template`으로 변경
+  - 배포 문서에서 source repo를 `cxi-template`, 배포 repo를 `cxi-skill-pack`으로 구분
+  - `references/codex-duplicate-skill-cleanup-guide.md` 신규 추가
+  - `references/release-notes-v0.1.md`를 source reference로 승격해 배포 repo 재생성 시 보존
+  - 배포 package의 `docs/`에 Codex 중복 스킬 정리 가이드를 포함하도록 보강
+- 검증: 이번 작업 후 catalog refresh, readiness audit, release candidate 생성, cxi-skill-pack export를 수행 예정
+- 남은 일: 원격 배포 후 사용자는 `git pull` 및 `adapters\codex\install_to_codex.bat --remove-legacy`로 중복 표시를 정리할 수 있음
+
+## 2026-08-27 — 짧은 skill command alias 체계 추가
+
+- 계기: 실제 설치 테스트 후 `app-review-analysis-pipeline`처럼 canonical skill ID가 너무 길어 팀원이 직접 호출하기 불편하다는 피드백이 나옴
+- 변경:
+  - `build_distribution_bundle.py`에 `shortName`, `displayName`, `aliases`, `commands`, `canonicalCommand` metadata 생성 추가
+  - 사용자-facing 기본 command를 `/app-review`, `/survey-stats`, `/transcript-pii` 같은 짧은 alias로 전환
+  - 기존 긴 `/{skill_id}` 명령은 resolver 호환용 metadata로만 유지하고, slash-command 파일은 짧은 alias만 생성하도록 정리
+  - Codex adapter는 기본적으로 긴 canonical skill 폴더 복사가 아니라 짧은 alias wrapper skill을 설치하도록 변경
+  - Claude, ChatGPT, MCP, runtime resolver가 짧은 alias와 긴 canonical ID를 모두 인식하되 UI command는 짧은 alias 우선으로 노출하도록 보강
+  - resolver top-level 응답에 `command`, `canonical_skill_id`, `legacy_command`를 추가해 사용자가 바로 짧은 명령을 볼 수 있게 함
+  - manifest의 slash-command adapter 경로와 배포 README의 포함 스킬 목록을 `shortName` 기준으로 정렬
+  - 설치 가이드와 배포 아키텍처에 “짧은 명령 우선, canonical ID 내부 유지” 원칙 반영
+- 검증: 이번 작업 후 catalog refresh를 수행 예정. 실제 adapter 재설치 테스트는 사용자 승인 후 진행
+- 남은 일: 팀 사용 후 alias 이름이 어색한 스킬은 `SHORT_NAME_RULES`에서 조정 가능
+
+## 2026-08-27 — Codex installer argparse percent escape 수정
+
+- 계기: `adapters\codex\install_to_codex.bat` 실행 시 Python 3.14 `argparse`가 help 문자열의 `%CODEX_HOME%`를 포맷 문자열로 해석해 `ValueError: badly formed help string`이 발생함
+- 변경:
+  - `build_distribution_bundle.py`가 생성하는 Codex installer의 argparse help 문구에서 `%CODEX_HOME%`를 `%%CODEX_HOME%%`로 escape
+  - 이미 배포된 `cxi-skill-pack/adapters/codex/install_to_codex.py`에도 동일 수정 반영 필요
+- 검증: 사용자 실행 오류 기반 hotfix. 이번 작업 후 catalog refresh를 수행 예정
+- 남은 일: 원격 배포 repo에 반영하려면 `cxi-skill-pack` commit/push 및 필요 시 `v0.1` tag 재지정 필요
+
 ## 2026-08-27 — skill readiness audit와 release candidate 자동화 추가
 
 - 계기: catalog 갱신, skill 최소 기준 통과 확인, 1차 배포 스킬 묶음 선정을 AI가 자동 수행할 수 있도록 도구화해야 함
@@ -24,7 +60,7 @@
 
 ## 2026-08-27 — cxi-skill-pack 배포 repo 구조 반영
 
-- 계기: 팀 배포용 GitHub repo `https://github.com/HXRHIT/cxi-skill-pack`가 생성되어 UXR-Template의 스킬 산출물을 배포 repo 구조로 정리해야 함
+- 계기: 팀 배포용 GitHub repo `https://github.com/HXRHIT/cxi-skill-pack`가 생성되어 cxi-template의 스킬 산출물을 배포 repo 구조로 정리해야 함
 - 변경:
   - `build_distribution_bundle.py` 기본 package name을 `cxi-skill-pack`으로 전환
   - 배포 산출물에 root `README.md`, `docs/` 설치/운영 문서, `update_cxi_skills.bat`를 생성하도록 보강
@@ -65,7 +101,7 @@
 
 ## 2026-08-27 — 팀 배포용 UXR skill pack 구조 추가
 
-- 계기: UXR-Template의 스킬/코드를 팀원이 내려받아 Claude, ChatGPT, Codex 등 다양한 AI agent에서 `/스킬명` 또는 자연어 질의 기반으로 호출할 수 있게 하고 싶다는 요청 대응
+- 계기: cxi-template의 스킬/코드를 팀원이 내려받아 Claude, ChatGPT, Codex 등 다양한 AI agent에서 `/스킬명` 또는 자연어 질의 기반으로 호출할 수 있게 하고 싶다는 요청 대응
 - 변경:
   - `references/distribution-architecture.md` 신규 추가: canonical skill registry, manifest, agent adapter, natural-language resolver 구조 정의
   - `scripts/build_distribution_bundle.py` 신규 추가: `.agents/skills/*`를 portable `uxr-skill-pack` 폴더로 복사하고 `manifest.json`, slash command adapter, `runtime/resolve_skill.py`를 생성

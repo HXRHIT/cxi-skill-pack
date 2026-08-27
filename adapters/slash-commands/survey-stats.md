@@ -1,6 +1,9 @@
-# /survey-basic-stats-analysis
+# /survey-stats
 
-UXR 스킬 `survey-basic-stats-analysis`를 사용한다.
+권장 명령: UXR 스킬 `survey-basic-stats-analysis`를 사용한다.
+
+짧은 권장 명령: `/survey-stats`
+Canonical ID: `survey-basic-stats-analysis`
 
 작업 전 순서:
 

@@ -15,3 +15,7 @@ python adapters/claude/install_slash_commands.py --commands-dir C:/path/to/comma
 ```
 
 생성된 command 파일은 이 skill pack의 `skills/{skill_id}/SKILL.md`를 읽도록 안내한다.
+
+팀원이 직접 입력할 때는 짧은 명령을 우선 사용한다.
+
+예: `/uxr:app-review`, `/uxr:survey-stats`, `/uxr:transcript-pii`

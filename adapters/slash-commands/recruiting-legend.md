@@ -1,6 +1,9 @@
-# /recruiting-list-legend-generator
+# /recruiting-legend
 
-UXR 스킬 `recruiting-list-legend-generator`를 사용한다.
+권장 명령: UXR 스킬 `recruiting-list-legend-generator`를 사용한다.
+
+짧은 권장 명령: `/recruiting-legend`
+Canonical ID: `recruiting-list-legend-generator`
 
 작업 전 순서:
 

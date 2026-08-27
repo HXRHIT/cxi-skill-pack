@@ -1,6 +1,9 @@
-# /interview-quant-coding-skill
+# /interview-coding
 
-UXR 스킬 `interview-quant-coding-skill`를 사용한다.
+권장 명령: UXR 스킬 `interview-quant-coding-skill`를 사용한다.
+
+짧은 권장 명령: `/interview-coding`
+Canonical ID: `interview-quant-coding-skill`
 
 작업 전 순서:
 

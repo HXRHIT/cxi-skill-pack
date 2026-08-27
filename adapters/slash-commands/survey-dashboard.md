@@ -1,6 +1,9 @@
-# /survey-results-dashboard
+# /survey-dashboard
 
-UXR 스킬 `survey-results-dashboard`를 사용한다.
+권장 명령: UXR 스킬 `survey-results-dashboard`를 사용한다.
+
+짧은 권장 명령: `/survey-dashboard`
+Canonical ID: `survey-results-dashboard`
 
 작업 전 순서:
 

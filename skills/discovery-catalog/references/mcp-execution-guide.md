@@ -1,6 +1,6 @@
 # UXR 스킬을 MCP로 실행하는 쉬운 가이드
 
-이 문서는 팀원이 Claude, ChatGPT, Codex 같은 AI agent에서 UXR-Template 스킬을 MCP로 호출할 때의 기본 사용법을 설명한다.
+이 문서는 팀원이 Claude, ChatGPT, Codex 같은 AI agent에서 cxi-template 스킬을 MCP로 호출할 때의 기본 사용법을 설명한다.
 
 핵심은 간단하다.
 

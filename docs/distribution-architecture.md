@@ -1,6 +1,6 @@
 # CXI skill distribution architecture
 
-This reference defines how to package UXR-Template skills so teammates can use one deployment repo, `cxi-skill-pack`, from different AI agents.
+This reference defines how to package cxi-template skills so teammates can use one deployment repo, `cxi-skill-pack`, from different AI agents.
 
 For the Korean teammate-facing installation guide, see [agent-adapter-install-guide.md](agent-adapter-install-guide.md).
 
@@ -11,6 +11,7 @@ Do not make separate source-of-truth copies for Claude, ChatGPT, Codex, and MCP.
 The stable core is:
 
 - canonical skill ID: `.agents/skills/{skill_id}`
+- short command name: `shortName` in `manifest.json`
 - entrypoint: `SKILL.md`
 - reusable code: `scripts/`
 - optional guidance: `references/`
@@ -35,7 +36,7 @@ cxi-skill-pack/
 ├─ adapters/
 │  ├─ README.md
 │  └─ slash-commands/
-│     └─ {skill_id}.md
+│     ├─ {shortName}.md
 └─ runtime/
    ├─ resolve_skill.py
    └─ check_updates.py
@@ -47,13 +48,14 @@ There are two supported invocation paths.
 
 ### Direct command
 
-If the agent supports custom slash commands, map:
+If the agent supports custom slash commands, map the short command first:
 
-- `/{skill_id}` → read `skills/{skill_id}/SKILL.md`
+- `/{shortName}` → resolve to canonical `skill_id`, then read `skills/{skill_id}/SKILL.md`
+- `/{skill_id}` → legacy fallback for compatibility through resolver metadata, not a duplicated slash-command file
 - then follow the skill instructions
 - then run skill scripts only when the user request requires execution
 
-Do not alias executable commands to display names. Aliases can help search, but execution should use canonical IDs.
+Do not rename canonical skill folders only to make commands shorter. Short aliases are user-facing entrypoints; canonical `skill_id` stays in logs, manifest, reports, and file paths.
 
 ### Natural-language routing
 
@@ -120,7 +122,7 @@ Each adapter should do only three things:
 Adapter examples:
 
 - Codex: place or reference the skill folders where Codex can discover them, and use the manifest for routing.
-- Claude-like agents: convert `adapters/slash-commands/*.md` into that agent's custom-command format when available.
+- Claude-like agents: convert the short-name files in `adapters/slash-commands/*.md` into that agent's custom-command format when available.
 - ChatGPT-like agents: use the pack as project knowledge or a mounted skill directory, and rely on the resolver manifest for canonical IDs.
 - MCP: expose `resolve` and `execute` tools using the schema in `mcp-routing-contract.md`.
 
@@ -148,4 +150,4 @@ Use a package version or timestamp and include:
 - sync report summary
 - optional zip filename
 
-For team usage, treat `manifest.json` as the package contract, `cxi-skill-pack` as the deployment repo, and `.agents/skills/*` in UXR-Template as the source.
+For team usage, treat `manifest.json` as the package contract, `cxi-skill-pack` as the deployment repo, and `.agents/skills/*` in cxi-template as the source.

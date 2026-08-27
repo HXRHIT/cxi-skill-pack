@@ -13,7 +13,7 @@ def find_repo_root(start: Path) -> Path:
     for candidate in [start, *start.parents]:
         if (candidate / "UX_Research_AI_아이디어_로그.md").exists() and (candidate / ".agents").exists():
             return candidate
-    raise FileNotFoundError("Could not locate UXR-Template repo root")
+    raise FileNotFoundError("Could not locate cxi-template repo root")
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -100,7 +100,7 @@ def build_sync_report(repo_root: Path) -> dict[str, Any]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Refresh Template Atlas generated data and write a compact sync report.")
-    parser.add_argument("--repo-root", type=Path, default=None, help="UXR-Template repo root. Defaults to auto-detection.")
+    parser.add_argument("--repo-root", type=Path, default=None, help="cxi-template repo root. Defaults to auto-detection.")
     parser.add_argument("--skip-refresh", action="store_true", help="Only write the sync report; do not run the existing website generator.")
     parser.add_argument("--report-path", type=Path, default=None, help="Output report path. Defaults to website/data/generated/catalog_sync_report.json.")
     args = parser.parse_args()

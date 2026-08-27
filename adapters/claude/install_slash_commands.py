@@ -13,12 +13,15 @@ def default_commands_dir() -> Path:
     return Path.home() / ".claude" / "commands" / "uxr"
 
 
-def command_body(pack: Path, skill: dict) -> str:
+def command_body(pack: Path, skill: dict, command_name: str) -> str:
     skill_id = skill["id"]
-    return f"""설치된 UXR skill pack에서 `{skill_id}` 스킬을 사용한다.
+    return f"""설치된 CXI skill pack에서 `{command_name}` 명령으로 canonical `{skill_id}` 스킬을 사용한다.
 
 스킬 진입점:
 `{pack / "skills" / skill_id / "SKILL.md"}`
+
+짧은 권장 명령: `{skill.get("command", "/" + command_name)}`
+Canonical ID: `{skill_id}`
 
 작업 전 순서:
 
@@ -44,8 +47,9 @@ def main() -> None:
 
     written = []
     for skill in manifest.get("skills", []):
-        path = commands_dir / f"{skill['id']}.md"
-        path.write_text(command_body(root, skill), encoding="utf-8")
+        command_name = skill.get("shortName") or skill["id"]
+        path = commands_dir / f"{command_name}.md"
+        path.write_text(command_body(root, skill, command_name), encoding="utf-8")
         written.append(str(path))
 
     print(json.dumps({

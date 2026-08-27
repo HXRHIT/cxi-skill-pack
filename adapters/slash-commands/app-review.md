@@ -1,6 +1,9 @@
-# /app-review-analysis-pipeline
+# /app-review
 
-UXR 스킬 `app-review-analysis-pipeline`를 사용한다.
+권장 명령: UXR 스킬 `app-review-analysis-pipeline`를 사용한다.
+
+짧은 권장 명령: `/app-review`
+Canonical ID: `app-review-analysis-pipeline`
 
 작업 전 순서:
 

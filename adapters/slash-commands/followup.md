@@ -1,6 +1,9 @@
-# /followup-implementation-tracker
+# /followup
 
-UXR 스킬 `followup-implementation-tracker`를 사용한다.
+권장 명령: UXR 스킬 `followup-implementation-tracker`를 사용한다.
+
+짧은 권장 명령: `/followup`
+Canonical ID: `followup-implementation-tracker`
 
 작업 전 순서:
 

@@ -131,7 +131,7 @@ adapters\codex\install_to_codex.bat --target C:\원하는\skills\폴더
 설치 후:
 
 1. Codex를 새로 열거나 새 task를 시작한다.
-2. 사용자가 `/app-review-analysis-pipeline`처럼 스킬명을 직접 말하거나, “앱 리뷰 분석해줘”처럼 자연어로 요청한다.
+2. 사용자가 `/app-review`처럼 짧은 스킬명을 직접 말하거나, “앱 리뷰 분석해줘”처럼 자연어로 요청한다.
 3. Codex가 해당 `SKILL.md`를 읽고 작업한다.
 
 ## Claude 계열 agent에서 쓰기
@@ -163,7 +163,7 @@ adapters\claude\install_slash_commands.bat --commands-dir C:\원하는\commands\
 예시 사용:
 
 ```text
-/uxr:app-review-analysis-pipeline 하나1Q 앱 리뷰 분석해줘
+/uxr:app-review 하나1Q 앱 리뷰 분석해줘
 ```
 
 실제 slash command 표기 방식은 사용하는 Claude 계열 도구의 규칙에 따라 조금 다를 수 있다.
@@ -254,6 +254,7 @@ python runtime/resolve_skill.py "앱 리뷰 분석해서 대시보드 만들어�
 ```json
 {
   "resolved_skill_id": "app-review-analysis-pipeline",
+  "command": "/app-review",
   "next": "execute"
 }
 ```
@@ -265,16 +266,16 @@ python runtime/resolve_skill.py "앱 리뷰 분석해서 대시보드 만들어�
 스킬명을 아는 사람은 바로 이렇게 요청하면 된다.
 
 ```text
-/app-review-analysis-pipeline 하나1Q 앱 리뷰 분석해줘
+/app-review 하나1Q 앱 리뷰 분석해줘
 ```
 
-이때 canonical skill ID는 `skills/` 폴더명과 같아야 한다.
+팀원이 직접 입력할 때는 짧은 명령을 우선 사용한다. 내부 canonical skill ID는 `skills/` 폴더명과 같고, 로그와 리포트에는 함께 남긴다.
 
 예시:
 
-- `app-review-analysis-pipeline`
-- `transcript-anonymizer-skill`
-- `survey-basic-stats-analysis`
+- `/app-review` → `app-review-analysis-pipeline`
+- `/transcript-pii` → `transcript-anonymizer-skill`
+- `/survey-stats` → `survey-basic-stats-analysis`
 - `research-qa-skill`
 
 ## 업데이트 방법
@@ -297,6 +298,14 @@ Codex 예시:
 ```bat
 adapters\codex\install_to_codex.bat
 ```
+
+이전 설치 때문에 긴 스킬명과 짧은 스킬명이 같이 보이면 아래처럼 legacy 폴더를 정리한다.
+
+```bat
+adapters\codex\install_to_codex.bat --remove-legacy
+```
+
+자세한 내용은 `docs/codex-duplicate-skill-cleanup-guide.md`를 참고한다.
 
 zip 기반 업데이트도 가능하다.
 
@@ -335,13 +344,13 @@ python runtime/check_updates.py --remote-pack C:/공유폴더/latest-cxi-skill-p
 2. 본인 agent에 맞는 adapter를 실행한다.
 3. 업데이트할 때는 `git pull`을 한다.
 4. agent가 복사 설치 방식이면 adapter를 한 번 더 실행한다.
-5. 스킬명을 알면 `/스킬명`으로 부른다.
+5. 스킬명을 알면 짧은 `/스킬명`으로 부른다.
 6. 스킬명을 모르면 그냥 자연어로 말한다.
 7. 민감하거나 위험한 작업은 실행 전에 확인한다.
 
 ## 운영자가 배포할 때 할 일
 
-UXR-Template repo에서:
+cxi-template repo에서:
 
 ```bash
 python .agents/skills/discovery-catalog/scripts/refresh_catalog.py
@@ -367,4 +376,4 @@ python .agents/skills/discovery-catalog/scripts/build_distribution_bundle.py --o
 3. git repo에 변경사항을 반영한다.
 4. 팀원은 `git pull`로 갱신한다.
 5. zip 배포가 필요할 때만 새 bundle을 만든다.
-6. zip 설치 팀원은 `update_uxr_skills.bat` 또는 `runtime/check_updates.py --apply`로 갱신한다.
+6. zip 설치 팀원은 `update_cxi_skills.bat` 또는 `runtime/check_updates.py --apply`로 갱신한다.

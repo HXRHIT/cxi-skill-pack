@@ -1,6 +1,6 @@
 # Skill readiness audit
 
-- generatedAt: `2026-08-27T15:44:55`
+- generatedAt: `2026-08-27T17:02:38`
 - total skills: `23`
 - minimum pass: `23`
 - ready: `19`

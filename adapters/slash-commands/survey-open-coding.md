@@ -1,6 +1,9 @@
-# /survey-open-ended-coding-skill
+# /survey-open-coding
 
-UXR 스킬 `survey-open-ended-coding-skill`를 사용한다.
+권장 명령: UXR 스킬 `survey-open-ended-coding-skill`를 사용한다.
+
+짧은 권장 명령: `/survey-open-coding`
+Canonical ID: `survey-open-ended-coding-skill`
 
 작업 전 순서:
 

@@ -1,6 +1,9 @@
-# /persona-generator-skill
+# /persona
 
-UXR 스킬 `persona-generator-skill`를 사용한다.
+권장 명령: UXR 스킬 `persona-generator-skill`를 사용한다.
+
+짧은 권장 명령: `/persona`
+Canonical ID: `persona-generator-skill`
 
 작업 전 순서:
 

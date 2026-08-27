@@ -28,7 +28,7 @@ def find_repo_root(start: Path) -> Path:
     for candidate in [start, *start.parents]:
         if (candidate / "UX_Research_AI_아이디어_로그.md").exists() and (candidate / ".agents" / "skills").exists():
             return candidate
-    raise FileNotFoundError("Could not locate UXR-Template repo root")
+    raise FileNotFoundError("Could not locate cxi-template repo root")
 
 
 def load_audit(path: Path) -> dict[str, Any]:

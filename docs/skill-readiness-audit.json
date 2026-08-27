@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-08-27T15:44:55",
+  "generatedAt": "2026-08-27T17:02:38",
   "repoRoot": "C:\\Users\\hanati\\Documents\\GitHub\\UXR-Template",
   "summary": {
     "total": 23,
@@ -78,7 +78,7 @@
         "hasName": true,
         "hasDescription": true,
         "descriptionLength": 172,
-        "bodyLength": 5436,
+        "bodyLength": 5665,
         "hasChangelog": true,
         "hasReferencesDir": true,
         "hasScriptsDir": true,

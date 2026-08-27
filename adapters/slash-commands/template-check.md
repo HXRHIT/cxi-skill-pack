@@ -1,6 +1,9 @@
-# /template-hygiene-checker
+# /template-check
 
-UXR 스킬 `template-hygiene-checker`를 사용한다.
+권장 명령: UXR 스킬 `template-hygiene-checker`를 사용한다.
+
+짧은 권장 명령: `/template-check`
+Canonical ID: `template-hygiene-checker`
 
 작업 전 순서:
 

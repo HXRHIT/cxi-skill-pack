@@ -1,6 +1,9 @@
-# /survey-data-preprocessing
+# /survey-clean
 
-UXR 스킬 `survey-data-preprocessing`를 사용한다.
+권장 명령: UXR 스킬 `survey-data-preprocessing`를 사용한다.
+
+짧은 권장 명령: `/survey-clean`
+Canonical ID: `survey-data-preprocessing`
 
 작업 전 순서:
 

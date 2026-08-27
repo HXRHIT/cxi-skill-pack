@@ -1,6 +1,9 @@
-# /survey-analysis-verification
+# /survey-verify
 
-UXR 스킬 `survey-analysis-verification`를 사용한다.
+권장 명령: UXR 스킬 `survey-analysis-verification`를 사용한다.
+
+짧은 권장 명령: `/survey-verify`
+Canonical ID: `survey-analysis-verification`
 
 작업 전 순서:
 

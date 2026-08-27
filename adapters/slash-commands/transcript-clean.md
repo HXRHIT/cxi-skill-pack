@@ -1,6 +1,9 @@
-# /transcript-verification-enhancer
+# /transcript-clean
 
-UXR 스킬 `transcript-verification-enhancer`를 사용한다.
+권장 명령: UXR 스킬 `transcript-verification-enhancer`를 사용한다.
+
+짧은 권장 명령: `/transcript-clean`
+Canonical ID: `transcript-verification-enhancer`
 
 작업 전 순서:
 

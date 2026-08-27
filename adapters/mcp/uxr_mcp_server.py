@@ -16,16 +16,22 @@ except ImportError as exc:
 
 PACK_ROOT = Path(__file__).resolve().parents[2]
 MANIFEST_PATH = PACK_ROOT / "manifest.json"
-    mcp = FastMCP("cxi-skill-pack")
+mcp = FastMCP("cxi-skill-pack")
 
 
 def load_manifest() -> dict[str, Any]:
     return json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
 
 
+def normalize_skill_key(value: str) -> str:
+    return value.strip().lower().removeprefix("/").replace("_", "-")
+
+
 def find_skill(skill_id: str) -> dict[str, Any] | None:
+    wanted = normalize_skill_key(skill_id)
     for skill in load_manifest().get("skills", []):
-        if skill.get("id") == skill_id:
+        aliases = [skill.get("id", ""), skill.get("shortName", ""), *skill.get("aliases", []), *skill.get("commands", [])]
+        if wanted in {normalize_skill_key(alias) for alias in aliases if alias}:
             return skill
     return None
 
@@ -40,7 +46,7 @@ def resolve_skill(query: str, skill_id: str | None = None) -> dict[str, Any]:
             return {
                 "resolved_skill_id": skill_id,
                 "candidates": [skill],
-                "reason": "skill_id matched a canonical UXR skill ID.",
+                "reason": "skill_id matched a canonical CXI skill ID or short alias.",
                 "required_inputs": ["user request", "skill-specific inputs"],
                 "estimated_outputs": ["see resolved SKILL.md"],
                 "risk_level": "medium" if skill.get("hasScripts") else "low",

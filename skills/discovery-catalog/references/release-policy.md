@@ -1,12 +1,12 @@
 # CXI skill pack release policy
 
-이 문서는 `UXR-Template`에서 만든 스킬을 `cxi-skill-pack`으로 1차 배포할 때 적용하는 최소 기준과 후보 선정 규칙이다.
+이 문서는 `cxi-template`에서 만든 스킬을 `cxi-skill-pack`으로 1차 배포할 때 적용하는 최소 기준과 후보 선정 규칙이다.
 
 ## 기본 원칙
 
 - AI는 catalog 갱신, 최소 기준 검사, 배포 후보 추천까지 자동 수행한다.
 - 공식 배포 확정은 사람이 승인한다.
-- `UXR-Template/.agents/skills/*`가 원본이고, `cxi-skill-pack/skills/*`는 배포 산출물이다.
+- `cxi-template/.agents/skills/*`가 원본이고, `cxi-skill-pack/skills/*`는 배포 산출물이다.
 - 배포 repo에서 직접 스킬 내용을 수정하지 않는다.
 - 민감정보, 원천데이터, 프로젝트별 산출물은 skill pack에 넣지 않는다.
 
