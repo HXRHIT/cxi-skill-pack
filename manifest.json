@@ -1,7 +1,7 @@
 {
   "schemaVersion": "0.1.0",
   "packageName": "cxi-skill-pack",
-  "generatedAt": "2026-08-27T15:28:04",
+  "generatedAt": "2026-08-27T15:45:09",
   "sourceRepo": "C:\\Users\\hanati\\Documents\\GitHub\\UXR-Template",
   "sourceRepoName": "UXR-Template",
   "publicRepo": "https://github.com/HXRHIT/cxi-skill-pack",
@@ -62,7 +62,7 @@
       ],
       "hasScripts": true,
       "hasReferences": true,
-      "fingerprint": "9a29d83d2ad4fbd8"
+      "fingerprint": "f6962d466f3d588c"
     },
     {
       "id": "executive-one-pager-skill",
@@ -385,5 +385,9 @@
   },
   "artifact": {
     "zip": null
+  },
+  "releaseReports": {
+    "readinessAudit": "docs/skill-readiness-audit.md",
+    "releaseCandidates": "docs/release-candidates-v0.1.md"
   }
 }

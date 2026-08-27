@@ -52,6 +52,7 @@ agent가 별도 폴더로 복사 설치되어 있다면 `git pull` 후 해당 ad
 - `adapters/`: Codex, Claude, ChatGPT, MCP 연결 도구
 - `runtime/`: 자연어 요청을 스킬로 연결하거나 업데이트를 비교하는 공통 도구
 - `docs/install-guide-ko.md`: 팀원용 한글 설치 가이드
+- `docs/release-candidates-v0.1.md`: 1차 배포 추천/파일럿/보류 리포트
 
 ## 포함 스킬
 

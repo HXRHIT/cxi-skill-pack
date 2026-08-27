@@ -1,0 +1,274 @@
+{
+  "schemaVersion": "0.1.0",
+  "version": "v0.1",
+  "generatedAt": "2026-08-27T15:45:01",
+  "policy": "AI recommends the release bundle; a human owner approves the official release.",
+  "summary": {
+    "release": 15,
+    "pilot": 8,
+    "hold": 0,
+    "sourceAuditGeneratedAt": "2026-08-27T15:44:55"
+  },
+  "recommendedRelease": [
+    {
+      "id": "app-review-analysis-pipeline",
+      "releaseScore": 98,
+      "readinessScore": 100,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [],
+      "reason": "minimum criteria passed and the skill is high-priority for the first team distribution."
+    },
+    {
+      "id": "transcript-verification-enhancer",
+      "releaseScore": 95,
+      "readinessScore": 100,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [],
+      "reason": "minimum criteria passed and the skill is high-priority for the first team distribution."
+    },
+    {
+      "id": "transcript-anonymizer-skill",
+      "releaseScore": 94,
+      "readinessScore": 100,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [],
+      "reason": "minimum criteria passed and the skill is high-priority for the first team distribution."
+    },
+    {
+      "id": "discovery-catalog",
+      "releaseScore": 93,
+      "readinessScore": 92,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [
+        "latest CHANGELOG entry has no completed validation evidence"
+      ],
+      "reason": "minimum criteria passed and the skill is high-priority for the first team distribution."
+    },
+    {
+      "id": "survey-basic-stats-analysis",
+      "releaseScore": 93,
+      "readinessScore": 100,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [],
+      "reason": "minimum criteria passed and the skill is high-priority for the first team distribution."
+    },
+    {
+      "id": "survey-data-preprocessing",
+      "releaseScore": 93,
+      "readinessScore": 100,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [],
+      "reason": "minimum criteria passed and the skill is high-priority for the first team distribution."
+    },
+    {
+      "id": "survey-analysis-verification",
+      "releaseScore": 92,
+      "readinessScore": 100,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [],
+      "reason": "minimum criteria passed and the skill is high-priority for the first team distribution."
+    },
+    {
+      "id": "survey-results-dashboard",
+      "releaseScore": 91,
+      "readinessScore": 100,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [],
+      "reason": "minimum criteria passed and the skill is high-priority for the first team distribution."
+    },
+    {
+      "id": "survey-open-ended-coding-skill",
+      "releaseScore": 90,
+      "readinessScore": 100,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [],
+      "reason": "minimum criteria passed and the skill is high-priority for the first team distribution."
+    },
+    {
+      "id": "qual-thematic-coding-skill",
+      "releaseScore": 89,
+      "readinessScore": 100,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [],
+      "reason": "minimum criteria passed and the skill is high-priority for the first team distribution."
+    },
+    {
+      "id": "research-qa-skill",
+      "releaseScore": 81,
+      "readinessScore": 80,
+      "readinessTier": "B_REVIEW",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [
+        "CHANGELOG.md missing",
+        "placeholder or TODO-like text remains"
+      ],
+      "reason": "minimum criteria passed and the skill is high-priority for the first team distribution."
+    },
+    {
+      "id": "interview-results-dashboard",
+      "releaseScore": 80,
+      "readinessScore": 90,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [
+        "placeholder or TODO-like text remains"
+      ],
+      "reason": "minimum criteria passed and the skill is high-priority for the first team distribution."
+    },
+    {
+      "id": "recruiting-list-legend-generator",
+      "releaseScore": 78,
+      "readinessScore": 100,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [],
+      "reason": "minimum criteria passed and the skill is high-priority for the first team distribution."
+    },
+    {
+      "id": "research-plan-writer-skill",
+      "releaseScore": 78,
+      "readinessScore": 100,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [],
+      "reason": "minimum criteria passed and the skill is high-priority for the first team distribution."
+    },
+    {
+      "id": "survey-interim-report-writer",
+      "releaseScore": 78,
+      "readinessScore": 100,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [],
+      "reason": "minimum criteria passed and the skill is high-priority for the first team distribution."
+    }
+  ],
+  "pilotOnly": [
+    {
+      "id": "template-hygiene-checker",
+      "releaseScore": 77,
+      "readinessScore": 76,
+      "readinessTier": "B_REVIEW",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [
+        "latest CHANGELOG entry has no completed validation evidence",
+        "placeholder or TODO-like text remains",
+        "source-data path or sensitive-data hint appears; confirm no raw project data is embedded"
+      ],
+      "reason": "usable candidate, but it needs either more validation evidence, clearer documentation, or lower-priority rollout."
+    },
+    {
+      "id": "coding-sheet-generator",
+      "releaseScore": 70,
+      "readinessScore": 90,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [
+        "placeholder or TODO-like text remains"
+      ],
+      "reason": "usable candidate, but it needs either more validation evidence, clearer documentation, or lower-priority rollout."
+    },
+    {
+      "id": "executive-one-pager-skill",
+      "releaseScore": 70,
+      "readinessScore": 90,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [
+        "CHANGELOG.md missing"
+      ],
+      "reason": "usable candidate, but it needs either more validation evidence, clearer documentation, or lower-priority rollout."
+    },
+    {
+      "id": "interview-quant-coding-skill",
+      "releaseScore": 70,
+      "readinessScore": 90,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [
+        "CHANGELOG.md missing"
+      ],
+      "reason": "usable candidate, but it needs either more validation evidence, clearer documentation, or lower-priority rollout."
+    },
+    {
+      "id": "persona-generator-skill",
+      "releaseScore": 70,
+      "readinessScore": 90,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [
+        "CHANGELOG.md missing"
+      ],
+      "reason": "usable candidate, but it needs either more validation evidence, clearer documentation, or lower-priority rollout."
+    },
+    {
+      "id": "transcript-pipeline-skill",
+      "releaseScore": 70,
+      "readinessScore": 90,
+      "readinessTier": "A_READY",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [
+        "CHANGELOG.md missing"
+      ],
+      "reason": "usable candidate, but it needs either more validation evidence, clearer documentation, or lower-priority rollout."
+    },
+    {
+      "id": "followup-implementation-tracker",
+      "releaseScore": 63,
+      "readinessScore": 80,
+      "readinessTier": "B_REVIEW",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [
+        "CHANGELOG.md missing",
+        "placeholder or TODO-like text remains"
+      ],
+      "reason": "usable candidate, but it needs either more validation evidence, clearer documentation, or lower-priority rollout."
+    },
+    {
+      "id": "interview-interim-report-writer",
+      "releaseScore": 63,
+      "readinessScore": 80,
+      "readinessTier": "B_REVIEW",
+      "minimumPass": true,
+      "blockers": [],
+      "warnings": [
+        "CHANGELOG.md missing",
+        "placeholder or TODO-like text remains"
+      ],
+      "reason": "usable candidate, but it needs either more validation evidence, clearer documentation, or lower-priority rollout."
+    }
+  ],
+  "hold": []
+}

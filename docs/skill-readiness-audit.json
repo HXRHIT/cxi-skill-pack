@@ -1,0 +1,585 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-08-27T15:44:55",
+  "repoRoot": "C:\\Users\\hanati\\Documents\\GitHub\\UXR-Template",
+  "summary": {
+    "total": 23,
+    "minimumPass": 23,
+    "ready": 19,
+    "review": 4,
+    "hold": 0,
+    "blockers": 0,
+    "warnings": 16
+  },
+  "skills": [
+    {
+      "id": "app-review-analysis-pipeline",
+      "score": 100,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 323,
+        "bodyLength": 4526,
+        "hasChangelog": true,
+        "hasReferencesDir": true,
+        "hasScriptsDir": true,
+        "scriptCount": 2,
+        "latestChangelogHasValidation": true,
+        "localLinkCount": 0,
+        "brokenLocalLinks": []
+      },
+      "scripts": [
+        "scripts/review_pipeline.py",
+        "scripts/run_app_review_pipeline.py"
+      ]
+    },
+    {
+      "id": "coding-sheet-generator",
+      "score": 90,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [
+        "placeholder or TODO-like text remains"
+      ],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 415,
+        "bodyLength": 3494,
+        "hasChangelog": true,
+        "hasReferencesDir": true,
+        "hasScriptsDir": true,
+        "scriptCount": 3,
+        "latestChangelogHasValidation": true,
+        "localLinkCount": 2,
+        "brokenLocalLinks": []
+      },
+      "scripts": [
+        "scripts/build_coding_workbook.mjs",
+        "scripts/build_coding_workbook.py",
+        "scripts/extract_guide_structure.py"
+      ]
+    },
+    {
+      "id": "discovery-catalog",
+      "score": 92,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [
+        "latest CHANGELOG entry has no completed validation evidence"
+      ],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 172,
+        "bodyLength": 5436,
+        "hasChangelog": true,
+        "hasReferencesDir": true,
+        "hasScriptsDir": true,
+        "scriptCount": 4,
+        "latestChangelogHasValidation": false,
+        "localLinkCount": 6,
+        "brokenLocalLinks": []
+      },
+      "scripts": [
+        "scripts/audit_skill_readiness.py",
+        "scripts/build_distribution_bundle.py",
+        "scripts/refresh_catalog.py",
+        "scripts/select_release_candidates.py"
+      ]
+    },
+    {
+      "id": "executive-one-pager-skill",
+      "score": 90,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [
+        "CHANGELOG.md missing"
+      ],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 564,
+        "bodyLength": 12392,
+        "hasChangelog": false,
+        "hasReferencesDir": true,
+        "hasScriptsDir": false,
+        "scriptCount": 0,
+        "latestChangelogHasValidation": false,
+        "localLinkCount": 4,
+        "brokenLocalLinks": []
+      },
+      "scripts": []
+    },
+    {
+      "id": "followup-implementation-tracker",
+      "score": 80,
+      "minimumPass": true,
+      "releaseTier": "B_REVIEW",
+      "blockers": [],
+      "warnings": [
+        "CHANGELOG.md missing",
+        "placeholder or TODO-like text remains"
+      ],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 509,
+        "bodyLength": 9455,
+        "hasChangelog": false,
+        "hasReferencesDir": true,
+        "hasScriptsDir": false,
+        "scriptCount": 0,
+        "latestChangelogHasValidation": false,
+        "localLinkCount": 5,
+        "brokenLocalLinks": []
+      },
+      "scripts": []
+    },
+    {
+      "id": "interview-interim-report-writer",
+      "score": 80,
+      "minimumPass": true,
+      "releaseTier": "B_REVIEW",
+      "blockers": [],
+      "warnings": [
+        "CHANGELOG.md missing",
+        "placeholder or TODO-like text remains"
+      ],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 488,
+        "bodyLength": 7910,
+        "hasChangelog": false,
+        "hasReferencesDir": true,
+        "hasScriptsDir": false,
+        "scriptCount": 0,
+        "latestChangelogHasValidation": false,
+        "localLinkCount": 2,
+        "brokenLocalLinks": []
+      },
+      "scripts": []
+    },
+    {
+      "id": "interview-quant-coding-skill",
+      "score": 90,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [
+        "CHANGELOG.md missing"
+      ],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 374,
+        "bodyLength": 3239,
+        "hasChangelog": false,
+        "hasReferencesDir": true,
+        "hasScriptsDir": false,
+        "scriptCount": 0,
+        "latestChangelogHasValidation": false,
+        "localLinkCount": 3,
+        "brokenLocalLinks": []
+      },
+      "scripts": []
+    },
+    {
+      "id": "interview-results-dashboard",
+      "score": 90,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [
+        "placeholder or TODO-like text remains"
+      ],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 440,
+        "bodyLength": 9413,
+        "hasChangelog": true,
+        "hasReferencesDir": true,
+        "hasScriptsDir": true,
+        "scriptCount": 1,
+        "latestChangelogHasValidation": true,
+        "localLinkCount": 7,
+        "brokenLocalLinks": []
+      },
+      "scripts": [
+        "scripts/build_report_docx.py"
+      ]
+    },
+    {
+      "id": "persona-generator-skill",
+      "score": 90,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [
+        "CHANGELOG.md missing"
+      ],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 369,
+        "bodyLength": 4364,
+        "hasChangelog": false,
+        "hasReferencesDir": true,
+        "hasScriptsDir": false,
+        "scriptCount": 0,
+        "latestChangelogHasValidation": false,
+        "localLinkCount": 3,
+        "brokenLocalLinks": []
+      },
+      "scripts": []
+    },
+    {
+      "id": "qual-thematic-coding-skill",
+      "score": 100,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 492,
+        "bodyLength": 4858,
+        "hasChangelog": true,
+        "hasReferencesDir": true,
+        "hasScriptsDir": false,
+        "scriptCount": 0,
+        "latestChangelogHasValidation": true,
+        "localLinkCount": 3,
+        "brokenLocalLinks": []
+      },
+      "scripts": []
+    },
+    {
+      "id": "recruiting-list-legend-generator",
+      "score": 100,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 305,
+        "bodyLength": 8052,
+        "hasChangelog": true,
+        "hasReferencesDir": true,
+        "hasScriptsDir": true,
+        "scriptCount": 1,
+        "latestChangelogHasValidation": true,
+        "localLinkCount": 2,
+        "brokenLocalLinks": []
+      },
+      "scripts": [
+        "scripts/add_guide_sheet.py"
+      ]
+    },
+    {
+      "id": "research-plan-writer-skill",
+      "score": 100,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 339,
+        "bodyLength": 7552,
+        "hasChangelog": true,
+        "hasReferencesDir": true,
+        "hasScriptsDir": false,
+        "scriptCount": 0,
+        "latestChangelogHasValidation": true,
+        "localLinkCount": 2,
+        "brokenLocalLinks": []
+      },
+      "scripts": []
+    },
+    {
+      "id": "research-qa-skill",
+      "score": 80,
+      "minimumPass": true,
+      "releaseTier": "B_REVIEW",
+      "blockers": [],
+      "warnings": [
+        "CHANGELOG.md missing",
+        "placeholder or TODO-like text remains"
+      ],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 279,
+        "bodyLength": 4048,
+        "hasChangelog": false,
+        "hasReferencesDir": true,
+        "hasScriptsDir": false,
+        "scriptCount": 0,
+        "latestChangelogHasValidation": false,
+        "localLinkCount": 2,
+        "brokenLocalLinks": []
+      },
+      "scripts": []
+    },
+    {
+      "id": "survey-analysis-verification",
+      "score": 100,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 383,
+        "bodyLength": 3648,
+        "hasChangelog": true,
+        "hasReferencesDir": true,
+        "hasScriptsDir": true,
+        "scriptCount": 1,
+        "latestChangelogHasValidation": true,
+        "localLinkCount": 3,
+        "brokenLocalLinks": []
+      },
+      "scripts": [
+        "scripts/verify_findings.py"
+      ]
+    },
+    {
+      "id": "survey-basic-stats-analysis",
+      "score": 100,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 448,
+        "bodyLength": 4536,
+        "hasChangelog": true,
+        "hasReferencesDir": true,
+        "hasScriptsDir": true,
+        "scriptCount": 1,
+        "latestChangelogHasValidation": true,
+        "localLinkCount": 3,
+        "brokenLocalLinks": []
+      },
+      "scripts": [
+        "scripts/build_basic_stats.py"
+      ]
+    },
+    {
+      "id": "survey-data-preprocessing",
+      "score": 100,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 404,
+        "bodyLength": 3352,
+        "hasChangelog": true,
+        "hasReferencesDir": true,
+        "hasScriptsDir": true,
+        "scriptCount": 1,
+        "latestChangelogHasValidation": true,
+        "localLinkCount": 2,
+        "brokenLocalLinks": []
+      },
+      "scripts": [
+        "scripts/build_cleaned_dataset.py"
+      ]
+    },
+    {
+      "id": "survey-interim-report-writer",
+      "score": 100,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 437,
+        "bodyLength": 4742,
+        "hasChangelog": true,
+        "hasReferencesDir": true,
+        "hasScriptsDir": true,
+        "scriptCount": 1,
+        "latestChangelogHasValidation": true,
+        "localLinkCount": 2,
+        "brokenLocalLinks": []
+      },
+      "scripts": [
+        "scripts/build_report_docx.py"
+      ]
+    },
+    {
+      "id": "survey-open-ended-coding-skill",
+      "score": 100,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 360,
+        "bodyLength": 4765,
+        "hasChangelog": true,
+        "hasReferencesDir": true,
+        "hasScriptsDir": true,
+        "scriptCount": 1,
+        "latestChangelogHasValidation": true,
+        "localLinkCount": 3,
+        "brokenLocalLinks": []
+      },
+      "scripts": [
+        "scripts/build_open_ended_workbook.py"
+      ]
+    },
+    {
+      "id": "survey-results-dashboard",
+      "score": 100,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 356,
+        "bodyLength": 4730,
+        "hasChangelog": true,
+        "hasReferencesDir": true,
+        "hasScriptsDir": true,
+        "scriptCount": 3,
+        "latestChangelogHasValidation": true,
+        "localLinkCount": 3,
+        "brokenLocalLinks": []
+      },
+      "scripts": [
+        "scripts/build_dashboard_report_bridge.py",
+        "scripts/build_full_dashboard.py",
+        "scripts/build_interactive_dashboard.py"
+      ]
+    },
+    {
+      "id": "template-hygiene-checker",
+      "score": 76,
+      "minimumPass": true,
+      "releaseTier": "B_REVIEW",
+      "blockers": [],
+      "warnings": [
+        "latest CHANGELOG entry has no completed validation evidence",
+        "placeholder or TODO-like text remains",
+        "source-data path or sensitive-data hint appears; confirm no raw project data is embedded"
+      ],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 267,
+        "bodyLength": 3446,
+        "hasChangelog": true,
+        "hasReferencesDir": true,
+        "hasScriptsDir": true,
+        "scriptCount": 1,
+        "latestChangelogHasValidation": false,
+        "localLinkCount": 1,
+        "brokenLocalLinks": []
+      },
+      "scripts": [
+        "scripts/scan_template_hygiene.py"
+      ]
+    },
+    {
+      "id": "transcript-anonymizer-skill",
+      "score": 100,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 121,
+        "bodyLength": 3186,
+        "hasChangelog": true,
+        "hasReferencesDir": false,
+        "hasScriptsDir": true,
+        "scriptCount": 1,
+        "latestChangelogHasValidation": true,
+        "localLinkCount": 4,
+        "brokenLocalLinks": []
+      },
+      "scripts": [
+        "scripts/scan_pii.py"
+      ]
+    },
+    {
+      "id": "transcript-pipeline-skill",
+      "score": 90,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [
+        "CHANGELOG.md missing"
+      ],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 330,
+        "bodyLength": 3118,
+        "hasChangelog": false,
+        "hasReferencesDir": false,
+        "hasScriptsDir": false,
+        "scriptCount": 0,
+        "latestChangelogHasValidation": false,
+        "localLinkCount": 0,
+        "brokenLocalLinks": []
+      },
+      "scripts": []
+    },
+    {
+      "id": "transcript-verification-enhancer",
+      "score": 100,
+      "minimumPass": true,
+      "releaseTier": "A_READY",
+      "blockers": [],
+      "warnings": [],
+      "checks": {
+        "hasName": true,
+        "hasDescription": true,
+        "descriptionLength": 63,
+        "bodyLength": 4446,
+        "hasChangelog": true,
+        "hasReferencesDir": false,
+        "hasScriptsDir": true,
+        "scriptCount": 1,
+        "latestChangelogHasValidation": true,
+        "localLinkCount": 2,
+        "brokenLocalLinks": []
+      },
+      "scripts": [
+        "scripts/batch_processor.py"
+      ]
+    }
+  ]
+}

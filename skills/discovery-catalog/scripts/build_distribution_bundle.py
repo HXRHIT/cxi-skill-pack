@@ -795,8 +795,20 @@ def write_docs(output_root: Path, repo_root: Path) -> None:
         "distribution-architecture.md": repo_root / ".agents" / "skills" / "discovery-catalog" / "references" / "distribution-architecture.md",
         "mcp-execution-guide-ko.md": repo_root / ".agents" / "skills" / "discovery-catalog" / "references" / "mcp-execution-guide.md",
         "mcp-routing-contract.md": repo_root / ".agents" / "skills" / "discovery-catalog" / "references" / "mcp-routing-contract.md",
+        "release-policy.md": repo_root / ".agents" / "skills" / "discovery-catalog" / "references" / "release-policy.md",
     }
     for output_name, source_path in source_docs.items():
+        if source_path.exists():
+            shutil.copy2(source_path, docs_root / output_name)
+
+    generated_root = repo_root / "website" / "data" / "generated"
+    generated_docs = {
+        "skill-readiness-audit.md": generated_root / "skill_readiness_audit.md",
+        "skill-readiness-audit.json": generated_root / "skill_readiness_audit.json",
+        "release-candidates-v0.1.md": generated_root / "release_candidates_v0.1.md",
+        "release-candidates-v0.1.json": generated_root / "release_candidates_v0.1.json",
+    }
+    for output_name, source_path in generated_docs.items():
         if source_path.exists():
             shutil.copy2(source_path, docs_root / output_name)
 
@@ -857,6 +869,7 @@ agent가 별도 폴더로 복사 설치되어 있다면 `git pull` 후 해당 ad
 - `adapters/`: Codex, Claude, ChatGPT, MCP 연결 도구
 - `runtime/`: 자연어 요청을 스킬로 연결하거나 업데이트를 비교하는 공통 도구
 - `docs/install-guide-ko.md`: 팀원용 한글 설치 가이드
+- `docs/release-candidates-v0.1.md`: 1차 배포 추천/파일럿/보류 리포트
 
 ## 포함 스킬
 
@@ -888,6 +901,10 @@ def write_manifest(output_root: Path, repo_root: Path, skills: list[dict[str, An
         },
         "artifact": {
             "zip": zip_name,
+        },
+        "releaseReports": {
+            "readinessAudit": "docs/skill-readiness-audit.md",
+            "releaseCandidates": "docs/release-candidates-v0.1.md",
         },
     }
     (output_root / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

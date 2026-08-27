@@ -10,6 +10,18 @@
 
 ---
 
+## 2026-08-27 — skill readiness audit와 release candidate 자동화 추가
+
+- 계기: catalog 갱신, skill 최소 기준 통과 확인, 1차 배포 스킬 묶음 선정을 AI가 자동 수행할 수 있도록 도구화해야 함
+- 변경:
+  - `scripts/audit_skill_readiness.py` 신규 추가: `SKILL.md`, frontmatter, changelog, local link, placeholder, 민감정보 힌트, source-data 힌트 기준으로 최소 배포 준비도를 점검
+  - `scripts/select_release_candidates.py` 신규 추가: readiness audit 결과를 `recommendedRelease`, `pilotOnly`, `hold` lane으로 자동 분류
+  - `references/release-policy.md` 신규 추가: AI 추천과 human approval gate를 포함한 1차 배포 기준 문서화
+  - `SKILL.md`에 readiness audit/release candidate 모드와 기본 산출물 경로 추가
+  - 배포 package의 `docs/`에 `release-policy.md`, readiness audit, release candidate 리포트가 포함되도록 `build_distribution_bundle.py` 보강
+- 검증: 이번 작업 후 실제 audit, release candidate 생성, catalog refresh, cxi-skill-pack export를 수행 예정
+- 남은 일: 팀이 1차 배포 포함/보류 기준을 실제 운영하면서 threshold를 조정할 수 있음
+
 ## 2026-08-27 — cxi-skill-pack 배포 repo 구조 반영
 
 - 계기: 팀 배포용 GitHub repo `https://github.com/HXRHIT/cxi-skill-pack`가 생성되어 UXR-Template의 스킬 산출물을 배포 repo 구조로 정리해야 함

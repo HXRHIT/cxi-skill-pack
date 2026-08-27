@@ -63,6 +63,26 @@ The package contains copied canonical skill folders, a `manifest.json`, slash-co
 
 For the Korean teammate-facing installation guide, read [references/agent-adapter-install-guide.md](references/agent-adapter-install-guide.md).
 
+### Audit readiness and select release candidates
+
+When the user asks whether skills are ready for distribution or which skills should be included in the first release, use the release policy and generated reports instead of deciding from memory.
+
+Read [references/release-policy.md](references/release-policy.md), then run:
+
+```bash
+python .agents/skills/discovery-catalog/scripts/audit_skill_readiness.py
+python .agents/skills/discovery-catalog/scripts/select_release_candidates.py --version v0.1
+```
+
+Default outputs:
+
+- `website/data/generated/skill_readiness_audit.json`
+- `website/data/generated/skill_readiness_audit.md`
+- `website/data/generated/release_candidates_v0.1.json`
+- `website/data/generated/release_candidates_v0.1.md`
+
+AI may recommend release lanes, but a human owner must approve the official release list before publishing to `cxi-skill-pack`.
+
 ### Validate this skill
 
 Use the skill-creator validator:
