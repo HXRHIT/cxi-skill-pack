@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survey Analysis Verification"
+  short_description: "Verify survey findings before reporting"
+  default_prompt: "Use $survey-analysis-verification to verify these survey findings against the source data, RH tracker, and final SSOT numbers before reporting."

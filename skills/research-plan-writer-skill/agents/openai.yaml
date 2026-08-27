@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Plan Writer"
+  short_description: "Draft two-stage UX research plans"
+  default_prompt: "Use $research-plan-writer-skill to turn this research brief into a structured UX research plan with RQs, methods, timeline, and deliverables."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survey Interim Report Writer"
+  short_description: "Draft formal survey interim reports"
+  default_prompt: "Use $survey-interim-report-writer to turn my validated survey findings into a high-quality interim report draft, then generate a docx draft and append it as the latest version."

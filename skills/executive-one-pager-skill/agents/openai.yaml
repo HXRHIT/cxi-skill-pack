@@ -1,0 +1,4 @@
+interface:
+  display_name: "Executive One-Pager Skill"
+  short_description: "Compress findings into an executive-facing one-pager, slide outline, or exec-summary section"
+  default_prompt: "Use $executive-one-pager-skill to compress these findings into an executive-facing narrative (default: timeline narrative, or tell me if you want conclusion-first / RQ-first) and render it as a one-pager, intro slide outline, or executive-summary section."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research QA"
+  short_description: "Questionnaire and bias QA checklist skill"
+  default_prompt: "Use $research-qa-skill to review this questionnaire or interview guide for bias, mapping gaps, and editing defects."

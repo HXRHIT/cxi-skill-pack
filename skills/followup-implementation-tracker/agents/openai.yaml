@@ -1,0 +1,4 @@
+interface:
+  display_name: "Follow-up Implementation Tracker"
+  short_description: "Track proposal follow-up and review cycles."
+  default_prompt: "Use $followup-implementation-tracker to turn improvement proposals and review cycles into a follow-up tracking workbook plus a summary of what was implemented, what remains unclear, and what still needs action."

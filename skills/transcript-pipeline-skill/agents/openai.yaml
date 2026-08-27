@@ -1,0 +1,4 @@
+interface:
+  display_name: "Transcript Pipeline"
+  short_description: "Safe transcript cleanup and anonymization wrapper"
+  default_prompt: "Use $transcript-pipeline-skill to verify, clean, and anonymize this transcript file without overwriting the source."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Interview Interim Report Writer"
+  short_description: "Draft formal interview interim reports from coded interview findings"
+  default_prompt: "Use $interview-interim-report-writer to turn these coded interview findings into a formal interview interim report (Executive Summary, research overview, topic-grouped insights with quotes, improvement direction, appendix), then generate a docx draft."

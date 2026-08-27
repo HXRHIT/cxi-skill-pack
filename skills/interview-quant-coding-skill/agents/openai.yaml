@@ -1,0 +1,4 @@
+interface:
+  display_name: "Interview Quant Coding"
+  short_description: "Build tag matrices and scoring workbooks"
+  default_prompt: "Use $interview-quant-coding-skill to turn these interview responses into a fixed-tag coding workbook with per-question matrices, rankings, and scoring summaries."

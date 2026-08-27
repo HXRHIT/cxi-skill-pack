@@ -1,0 +1,4 @@
+interface:
+  display_name: "Interview Results Dashboard"
+  short_description: "Build interview quick summaries and issue catalogs."
+  default_prompt: "Use $interview-results-dashboard to turn interview coding outputs into a quick summary, participant/theme dashboard, and optional issue catalog for reuse."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Persona Generator"
+  short_description: "Generate evidence-based persona workbooks."
+  default_prompt: "Use $persona-generator-skill to turn analyzed UXR evidence into a persona workbook with core profile sheets, goals, frustrations, and optional extended trait columns grounded in the team persona format."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survey Open-Ended Coding"
+  short_description: "Code open-ended survey responses into reusable theme workbooks."
+  default_prompt: "Use $survey-open-ended-coding-skill to turn these open-ended survey responses into a coding workbook with a codebook, response-level tags, frequency counts, representative quotes, and outlier notes."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Transcript Anonymizer"
+  short_description: "Mask participant PII in transcript-like research files"
+  default_prompt: "Use $transcript-anonymizer-skill to anonymize this transcript or research data file and create a safe output without overwriting the source."

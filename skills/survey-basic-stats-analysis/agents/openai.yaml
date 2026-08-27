@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survey Basic Stats"
+  short_description: "Question stats and RH tracking"
+  default_prompt: "Use $survey-basic-stats-analysis to turn this cleaned survey dataset into question-level stats sheets and a RH-based analysis tracker."

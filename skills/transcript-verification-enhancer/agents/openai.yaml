@@ -1,0 +1,4 @@
+interface:
+  display_name: "Transcript Verification"
+  short_description: "Clean STT transcripts and improve readability safely"
+  default_prompt: "Use $transcript-verification-enhancer to clean this transcript file, split speaker turns, and create a _cleaned output without touching the source."

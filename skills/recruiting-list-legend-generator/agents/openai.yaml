@@ -1,0 +1,4 @@
+interface:
+  display_name: "Recruiting Legend Generator"
+  short_description: "Generate self-explanatory recruiting roster guides."
+  default_prompt: "Use $recruiting-list-legend-generator to add a usage and PID legend sheet to this recruiting workbook."

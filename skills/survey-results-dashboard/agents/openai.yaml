@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survey Results Dashboard"
+  short_description: "Build survey workbench and report dashboards."
+  default_prompt: "Use $survey-results-dashboard to turn validated survey analysis outputs into a researcher workbench and a stakeholder-facing survey dashboard or report with segment views, AI insight guardrails, and low-base warnings."

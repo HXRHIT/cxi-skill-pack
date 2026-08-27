@@ -1,0 +1,4 @@
+interface:
+  display_name: "Coding Sheet Generator"
+  short_description: "Generate interview coding workbook skeletons."
+  default_prompt: "Use $coding-sheet-generator to build a coding workbook skeleton from this interview guide."

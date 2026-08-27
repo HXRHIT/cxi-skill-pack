@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survey Data Preprocessing"
+  short_description: "Prepare raw survey data for analysis"
+  default_prompt: "Use $survey-data-preprocessing to turn this raw survey export into a cleaned dataset plus a reviewed codebook and variable ledger."

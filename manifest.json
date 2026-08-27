@@ -1,0 +1,389 @@
+{
+  "schemaVersion": "0.1.0",
+  "packageName": "cxi-skill-pack",
+  "generatedAt": "2026-08-27T15:28:04",
+  "sourceRepo": "C:\\Users\\hanati\\Documents\\GitHub\\UXR-Template",
+  "sourceRepoName": "UXR-Template",
+  "publicRepo": "https://github.com/HXRHIT/cxi-skill-pack",
+  "canonicalSkillRoot": "skills",
+  "directCommandPattern": "/{skill_id}",
+  "naturalLanguageResolver": "runtime/resolve_skill.py",
+  "skillCount": 23,
+  "skills": [
+    {
+      "id": "app-review-analysis-pipeline",
+      "name": "app-review-analysis-pipeline",
+      "description": "Collect Play Store and App Store reviews for a user-specified app and period, then produce a sentiment + theme summary dashboard (pros/cons + opinion themes) in CSV/Excel/HTML for UX review workflows. Use this when Codex user asks for app-store review intelligence and wants consistent, reproducible 분석 결과 instead of 수동 복붙.",
+      "entrypoint": "skills/app-review-analysis-pipeline/SKILL.md",
+      "command": "/app-review-analysis-pipeline",
+      "keywords": [
+        "앱 리뷰",
+        "리뷰 분석",
+        "평점",
+        "플레이스토어",
+        "앱스토어",
+        "play store",
+        "app store"
+      ],
+      "hasScripts": true,
+      "hasReferences": true,
+      "fingerprint": "9fbbd26a73621f1e"
+    },
+    {
+      "id": "coding-sheet-generator",
+      "name": "coding-sheet-generator",
+      "description": "Generate blank or prewired coding workbook skeletons for structured interview activities such as Likert scales, adjective cards, rankings, multiple-choice coding, and short open-response batteries. Use when Codex needs to read an interview guide, protocol, or activity list and build a reusable spreadsheet scaffold before quantitative coding, frequency ranking, or downstream use with interview-quant-coding-skill.",
+      "entrypoint": "skills/coding-sheet-generator/SKILL.md",
+      "command": "/coding-sheet-generator",
+      "keywords": [
+        "코딩 시트",
+        "객관식 코딩",
+        "리커트",
+        "순위형",
+        "워크북 scaffold"
+      ],
+      "hasScripts": true,
+      "hasReferences": true,
+      "fingerprint": "b539725f9e066426"
+    },
+    {
+      "id": "discovery-catalog",
+      "name": "discovery-catalog",
+      "description": "Resolve, explain, and maintain the UXR team's template/skill catalog so agents and MCP-like callers can consistently find the right research skill without duplicating work.",
+      "entrypoint": "skills/discovery-catalog/SKILL.md",
+      "command": "/discovery-catalog",
+      "keywords": [
+        "스킬 찾기",
+        "스킬 추천",
+        "카탈로그",
+        "디스커버리",
+        "skill routing",
+        "mcp"
+      ],
+      "hasScripts": true,
+      "hasReferences": true,
+      "fingerprint": "9a29d83d2ad4fbd8"
+    },
+    {
+      "id": "executive-one-pager-skill",
+      "name": "executive-one-pager-skill",
+      "description": "Compress a report, analysis output, or project-related material into an executive-facing narrative in the team's preferred structure mode (timeline narrative, conclusion-first/Minto, or RQ-first), then render it as one-pager copy, an intro summary slide outline, or an executive-summary section draft. Most commonly this summarizes an already-written report, but it can also work directly from analysis content or project files when no full report exists yet or one isn't needed. Use when Codex needs to produce an executive one-pager or executive-summary section.",
+      "entrypoint": "skills/executive-one-pager-skill/SKILL.md",
+      "command": "/executive-one-pager-skill",
+      "keywords": [
+        "원페이저",
+        "임원 요약",
+        "executive summary",
+        "1pager",
+        "요약 슬라이드"
+      ],
+      "hasScripts": false,
+      "hasReferences": true,
+      "fingerprint": "f259eb153626cbf9"
+    },
+    {
+      "id": "followup-implementation-tracker",
+      "name": "followup-implementation-tracker",
+      "description": "Track research follow-up and implementation review cycles: read final, survey, and interview reports to extract improvement proposals with source anchors, build a fixed-status review workbook the researcher fills in, and produce companion review summaries. Use when Codex needs to manage post-research follow-up on design or product changes, especially to build a review checklist from reports, send proposal feedback, review whether recommendations were implemented, or summarize what changed after research.",
+      "entrypoint": "skills/followup-implementation-tracker/SKILL.md",
+      "command": "/followup-implementation-tracker",
+      "keywords": [
+        "후속조치",
+        "개선안 추적",
+        "반영 여부",
+        "implementation review"
+      ],
+      "hasScripts": false,
+      "hasReferences": true,
+      "fingerprint": "5f743e9333dec32b"
+    },
+    {
+      "id": "interview-interim-report-writer",
+      "name": "interview-interim-report-writer",
+      "description": "Turn qualitative interview coding output into a formal interview interim report — Executive Summary, research overview, topic-grouped claim-sentence insights with representative quotes, an improvement-direction section, and an appendix — matching the team's real interview interim report structure. Use when Codex needs to draft or update a document-style interview interim report from coded interview findings, as distinct from an interview results dashboard or a quick-summary artifact.",
+      "entrypoint": "skills/interview-interim-report-writer/SKILL.md",
+      "command": "/interview-interim-report-writer",
+      "keywords": [
+        "인터뷰 중간보고서",
+        "인터뷰 보고서",
+        "정성 보고서"
+      ],
+      "hasScripts": false,
+      "hasReferences": true,
+      "fingerprint": "03a000eb8c0eac0c"
+    },
+    {
+      "id": "interview-quant-coding-skill",
+      "name": "interview-quant-coding-skill",
+      "description": "Convert interview free responses into fixed-tag quantitative coding workbooks by building per-question true-false matrices, frequency rankings, insight tabs, and optional scoring-based participant segments. Use when Codex needs to transform qualitative interview answers into structured question-level coding sheets or participant scoring outputs for comparison and summary.",
+      "entrypoint": "skills/interview-quant-coding-skill/SKILL.md",
+      "command": "/interview-quant-coding-skill",
+      "keywords": [
+        "인터뷰 정량 코딩",
+        "태깅 매트릭스",
+        "빈도 코딩"
+      ],
+      "hasScripts": false,
+      "hasReferences": true,
+      "fingerprint": "c4226580cd6d0590"
+    },
+    {
+      "id": "interview-results-dashboard",
+      "name": "interview-results-dashboard",
+      "description": "Turn interview coding outputs into dashboard-style synthesis artifacts by combining participant profile views, cross-interview theme summaries, and optional issue-catalog packaging. Use when Codex needs to convert qualitative interview findings, coding workbooks, or quick-summary notes into a shareable interview results dashboard, quick summary table, or reusable component and issue library before executive one-pagers or report writing.",
+      "entrypoint": "skills/interview-results-dashboard/SKILL.md",
+      "command": "/interview-results-dashboard",
+      "keywords": [
+        "인터뷰 대시보드",
+        "인터뷰 결과",
+        "quick summary"
+      ],
+      "hasScripts": true,
+      "hasReferences": true,
+      "fingerprint": "13863b0a9c410855"
+    },
+    {
+      "id": "persona-generator-skill",
+      "name": "persona-generator-skill",
+      "description": "Generate evidence-based persona workbooks by turning synthesized UXR findings into structured persona profiles with core demographics, About, Goals, Frustrations, and optional extended trait fields. Use when Codex needs to create a persona artifact from analyzed survey, interview, app-review, or mixed-method research outputs, especially in the team's workbook format.",
+      "entrypoint": "skills/persona-generator-skill/SKILL.md",
+      "command": "/persona-generator-skill",
+      "keywords": [
+        "페르소나",
+        "persona"
+      ],
+      "hasScripts": false,
+      "hasReferences": true,
+      "fingerprint": "19dd3a6575b8edb6"
+    },
+    {
+      "id": "qual-thematic-coding-skill",
+      "name": "qual-thematic-coding-skill",
+      "description": "Analyze interview transcripts through qualitative thematic coding by extracting core themes, pain points, workarounds, emotional moments, and surprises; structuring them into the team Context-Content-Group schema; then synthesizing patterns across interviews and clustering them into affinity groups. Use when Codex needs to turn one or more interview transcripts into thematic coding files, cross-interview synthesis, or an affinity mapping report before dashboarding or executive reporting.",
+      "entrypoint": "skills/qual-thematic-coding-skill/SKILL.md",
+      "command": "/qual-thematic-coding-skill",
+      "keywords": [
+        "정성 코딩",
+        "테마 코딩",
+        "어피니티",
+        "인터뷰 분석"
+      ],
+      "hasScripts": false,
+      "hasReferences": true,
+      "fingerprint": "049b9eb5d0a13078"
+    },
+    {
+      "id": "recruiting-list-legend-generator",
+      "name": "recruiting-list-legend-generator",
+      "description": "Generate usage and legend sheets for recruiting rosters, participant-profile workbooks, and screener handoff files. Use when Codex needs to inspect a recruiting workbook and explain file purpose, stage, columns, PID conventions, and stage-specific flow before recruiting, screening, or transcript linkage.",
+      "entrypoint": "skills/recruiting-list-legend-generator/SKILL.md",
+      "command": "/recruiting-list-legend-generator",
+      "keywords": [
+        "리크루팅",
+        "참여자 명단",
+        "범례",
+        "pid"
+      ],
+      "hasScripts": true,
+      "hasReferences": true,
+      "fingerprint": "d7301c437c559cdc"
+    },
+    {
+      "id": "research-plan-writer-skill",
+      "name": "research-plan-writer-skill",
+      "description": "Turn a research brief, business question, or planning notes into a structured UX research plan with optional RQ and RH framing, repeated method blocks, timeline, deliverables, and team-style formal tone. Use when Codex needs to draft or refine a research plan, protocol overview, or planning brief before questionnaire or interview design.",
+      "entrypoint": "skills/research-plan-writer-skill/SKILL.md",
+      "command": "/research-plan-writer-skill",
+      "keywords": [
+        "리서치 계획서",
+        "연구계획",
+        "rq",
+        "rh",
+        "프로토콜"
+      ],
+      "hasScripts": false,
+      "hasReferences": true,
+      "fingerprint": "7c2a67000c7ea959"
+    },
+    {
+      "id": "research-qa-skill",
+      "name": "research-qa-skill",
+      "description": "Review research questionnaires, survey forms, and interview guides for bias, mapping gaps, domain-risk issues, and editing defects. Use when Codex needs to quality-check an instrument before fieldwork with a fixed checklist, severity labels, and Hana-finance-specific guardrails.",
+      "entrypoint": "skills/research-qa-skill/SKILL.md",
+      "command": "/research-qa-skill",
+      "keywords": [
+        "질문지 qa",
+        "편향 검증",
+        "설문 검수",
+        "인터뷰 가이드 검수"
+      ],
+      "hasScripts": false,
+      "hasReferences": true,
+      "fingerprint": "542050e3fd58ff55"
+    },
+    {
+      "id": "survey-analysis-verification",
+      "name": "survey-analysis-verification",
+      "description": "Verify survey analysis outputs before reporting by checking N counts, exclusion rules, stale-data risk, AI-generated claims, low-base handling, and the mapping from RQ or RH to findings. Use when Codex needs to compare survey findings against source data, cleaned inputs, basic-stats outputs, or plan-level RH sheets before dashboards, reports, or stakeholder readouts are finalized.",
+      "entrypoint": "skills/survey-analysis-verification/SKILL.md",
+      "command": "/survey-analysis-verification",
+      "keywords": [
+        "서베이 검증",
+        "분석 검증",
+        "가설 검증",
+        "n수 확인"
+      ],
+      "hasScripts": true,
+      "hasReferences": true,
+      "fingerprint": "24ccdcae2e982cb0"
+    },
+    {
+      "id": "survey-basic-stats-analysis",
+      "name": "survey-basic-stats-analysis",
+      "description": "Analyze cleaned survey datasets by producing question-level descriptive statistics, respondent-versus-response percentages, Likert summary metrics such as mean, standard deviation, and top-box or bottom-box summaries, plus a RH-based hypothesis tracker with methods, decisions, and insights. Use when Codex needs to turn cleaned survey data (.xlsx, .xls, .csv) into analysis-ready stats sheets or a basic survey findings workbook for UXR reporting.",
+      "entrypoint": "skills/survey-basic-stats-analysis/SKILL.md",
+      "command": "/survey-basic-stats-analysis",
+      "keywords": [
+        "기초통계",
+        "설문 통계",
+        "평균",
+        "표준편차",
+        "top box"
+      ],
+      "hasScripts": true,
+      "hasReferences": true,
+      "fingerprint": "2b1c16462277109b"
+    },
+    {
+      "id": "survey-data-preprocessing",
+      "name": "survey-data-preprocessing",
+      "description": "Prepare raw survey exports for analysis by detecting survey schema, preserving team missing-value conventions, normalizing wide-format multi-select or ranked questions, generating a cleaned dataset plus codebook or variable ledger, and enforcing a human review gate before downstream analysis. Use when Codex needs to convert raw survey response files (.csv, .xlsx, .xls) into analysis-ready survey data.",
+      "entrypoint": "skills/survey-data-preprocessing/SKILL.md",
+      "command": "/survey-data-preprocessing",
+      "keywords": [
+        "서베이 전처리",
+        "설문 전처리",
+        "cleaned dataset",
+        "codebook"
+      ],
+      "hasScripts": true,
+      "hasReferences": true,
+      "fingerprint": "ac51c5dfb5819107"
+    },
+    {
+      "id": "survey-interim-report-writer",
+      "name": "survey-interim-report-writer",
+      "description": "Turn validated survey analysis outputs into a formal survey interim report that preserves key metrics, base counts, competitive or driver evidence, and a bridge to the next interview phase. Use when Codex needs to draft or refine a document-style survey interim report from verified survey findings, update an existing interim report by appending a new latest version, or generate a polished markdown draft before producing a docx draft.",
+      "entrypoint": "skills/survey-interim-report-writer/SKILL.md",
+      "command": "/survey-interim-report-writer",
+      "keywords": [
+        "서베이 중간보고서",
+        "설문 보고서",
+        "survey report"
+      ],
+      "hasScripts": true,
+      "hasReferences": true,
+      "fingerprint": "a4651df8a1972fda"
+    },
+    {
+      "id": "survey-open-ended-coding-skill",
+      "name": "survey-open-ended-coding-skill",
+      "description": "Turn open-ended survey responses into structured coding workbooks by generating draft codebooks, applying 1-3 codes per response, summarizing code frequencies, extracting representative quotes, and flagging surprises or outliers. Use when Codex needs to analyze free-text survey responses from .xlsx, .xls, .csv, or extracted response tables for UXR reporting.",
+      "entrypoint": "skills/survey-open-ended-coding-skill/SKILL.md",
+      "command": "/survey-open-ended-coding-skill",
+      "keywords": [
+        "개방형 응답",
+        "주관식 코딩",
+        "오픈엔드",
+        "codebook"
+      ],
+      "hasScripts": true,
+      "hasReferences": true,
+      "fingerprint": "795d9fed6dfcf56a"
+    },
+    {
+      "id": "survey-results-dashboard",
+      "name": "survey-results-dashboard",
+      "description": "Turn validated survey analysis outputs into dashboard artifacts by separating a researcher workbench from a stakeholder-facing report, while preserving low-base warnings, segment cross-tabs, and AI insight guardrails. Use when Codex needs to build a survey dashboard or reporting view from cleaned survey stats, RH trackers, or verified analysis workbooks.",
+      "entrypoint": "skills/survey-results-dashboard/SKILL.md",
+      "command": "/survey-results-dashboard",
+      "keywords": [
+        "서베이 대시보드",
+        "설문 대시보드",
+        "survey dashboard"
+      ],
+      "hasScripts": true,
+      "hasReferences": true,
+      "fingerprint": "0665d67e4ebf4484"
+    },
+    {
+      "id": "template-hygiene-checker",
+      "name": "template-hygiene-checker",
+      "description": "Inspect reusable UXR template files and skill-pack artifacts for leftover real project data, confidential identifiers, unresolved comments, placeholders, and editing residue before team reuse or distribution. Report findings first; do not modify originals by default.",
+      "entrypoint": "skills/template-hygiene-checker/SKILL.md",
+      "command": "/template-hygiene-checker",
+      "keywords": [],
+      "hasScripts": true,
+      "hasReferences": true,
+      "fingerprint": "eaa8b4fd3d3ce6fe"
+    },
+    {
+      "id": "transcript-anonymizer-skill",
+      "name": "transcript-anonymizer-skill",
+      "description": "리서처가 익명화한 UX 리서치 데이터(전사본, 설문 응답, 리크루팅 명단)를 검사해 익명화되지 않고 남은 개인식별정보(PII)의 위치를 알려주는 스킬입니다. 치환은 하지 않습니다 — 익명화는 리서처가 직접 수행합니다.",
+      "entrypoint": "skills/transcript-anonymizer-skill/SKILL.md",
+      "command": "/transcript-anonymizer-skill",
+      "keywords": [
+        "익명화",
+        "개인정보",
+        "pii",
+        "전사본 마스킹"
+      ],
+      "hasScripts": true,
+      "hasReferences": false,
+      "fingerprint": "5d9ea950edecb4ad"
+    },
+    {
+      "id": "transcript-pipeline-skill",
+      "name": "transcript-pipeline-skill",
+      "description": "Wrap transcript cleanup and anonymization into one safe workflow. Use when Codex needs to process transcript-like .xlsx, .xls, or .csv files end-to-end by running transcript-verification-enhancer first, then transcript-anonymizer-skill, while preserving the source file and producing both _cleaned and _pipeline_completed outputs.",
+      "entrypoint": "skills/transcript-pipeline-skill/SKILL.md",
+      "command": "/transcript-pipeline-skill",
+      "keywords": [
+        "전사본 파이프라인",
+        "전사 정리",
+        "익명화까지"
+      ],
+      "hasScripts": false,
+      "hasReferences": false,
+      "fingerprint": "2eba1faf23ec9591"
+    },
+    {
+      "id": "transcript-verification-enhancer",
+      "name": "transcript-verification-enhancer",
+      "description": "UX 리서치 인터뷰 전사본(STT)의 정확도 검증, 화자 턴 분리, 오타 교정 및 가독성을 향상시키는 스킬입니다.",
+      "entrypoint": "skills/transcript-verification-enhancer/SKILL.md",
+      "command": "/transcript-verification-enhancer",
+      "keywords": [
+        "전사본 검증",
+        "stt",
+        "화자 분리",
+        "오타 교정"
+      ],
+      "hasScripts": true,
+      "hasReferences": false,
+      "fingerprint": "bf50637093ed613e"
+    }
+  ],
+  "adapters": {
+    "slashCommands": "adapters/slash-commands/{skill_id}.md",
+    "codexInstall": "adapters/codex/install_to_codex.py",
+    "claudeSlashInstall": "adapters/claude/install_slash_commands.py",
+    "chatgptProjectInstructions": "adapters/chatgpt/generate_project_instructions.py",
+    "mcpServer": "adapters/mcp/uxr_mcp_server.py",
+    "mcpContract": "docs/mcp-routing-contract.md"
+  },
+  "artifact": {
+    "zip": null
+  }
+}

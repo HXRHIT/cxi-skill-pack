@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "cxi-skill-pack": {
+      "command": "python",
+      "args": [
+        "adapters/mcp/uxr_mcp_server.py"
+      ],
+      "cwd": "<absolute-path-to-cxi-skill-pack>"
+    }
+  }
+}

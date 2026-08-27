@@ -1,0 +1,4 @@
+interface:
+  display_name: "Qual Thematic Coding"
+  short_description: "Extract themes and cross-interview insights"
+  default_prompt: "Use $qual-thematic-coding-skill to analyze these interview transcripts into individual thematic coding, cross-interview synthesis, and an affinity mapping report."
